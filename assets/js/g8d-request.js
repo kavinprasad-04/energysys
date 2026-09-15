@@ -1,8 +1,10 @@
 /* EnergySYS — G8D Wind Farm Service Request wizard (service-request.html).
-   Step-by-step D1..D8 + Attachments/Review, team-member & corrective-action
-   repeaters, multipart submit straight to Formspree (https://formspree.io/f/myeyrqzy).
-   No backend involved: no draft save/resume, no PDF report — fill and submit
-   the wizard in one sitting. */
+   Step-by-step D1..D8 + Review, team-member & corrective-action repeaters,
+   multipart submit straight to Formspree (https://formspree.io/f/myeyrqzy).
+   No backend involved: no draft save/resume, no file attachments (this
+   Formspree plan rejects any submission containing a file). On submit, a
+   PDF report is generated client-side (jsPDF) and downloaded to the
+   visitor's own device — it is not emailed. */
 (function () {
   "use strict";
 
@@ -10,15 +12,7 @@
   if (!form) return;
 
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  var MAX_FILES = 12;
-  var MAX_FILE_MB = 25;
-  var OK_EXT = [
-    "pdf", "jpg", "jpeg", "png", "webp", "gif", "heic",
-    "mp4", "mov", "avi", "mkv", "webm",
-    "doc", "docx", "xls", "xlsx", "csv", "txt", "rtf",
-    "dwg", "dxf", "zip", "7z", "rar"
-  ];
-  var STEP_COUNT = 9; // 0..7 = D1..D8, 8 = attachments + review
+  var STEP_COUNT = 9; // 0..7 = D1..D8, 8 = review
 
   var tracker = document.getElementById("g8d-tracker");
   var trackerItems = tracker ? Array.prototype.slice.call(tracker.querySelectorAll("li[data-step]")) : [];
@@ -36,10 +30,6 @@
   var caAdd = document.getElementById("g8d-ca-add");
   var reviewEl = document.getElementById("g8d-review");
 
-  var fileInput = document.getElementById("g8d-docs");
-  var drop = document.getElementById("g8d-drop");
-  var fileList = document.getElementById("g8d-filelist");
-  var docsErr = document.getElementById("g8d-docs-err");
   var honeypot = document.getElementById("g8d-website");
 
   var successPanel = document.getElementById("g8d-success");
@@ -51,7 +41,6 @@
   var currentStep = 0;
   var maxStepReached = 0;
   var sending = false;
-  var files = [];
 
   /* ------------------------------------------------------------ helpers --- */
   function setError(el, msg) {
@@ -267,80 +256,12 @@
     var caCountN = collectRows(caRows).length;
     if (teamCountN) html += '<div class="g8d-review__block"><div><dt>Team Members</dt><dd>' + teamCountN + " added</dd></div></div>";
     if (caCountN) html += '<div class="g8d-review__block"><div><dt>Corrective Actions</dt><dd>' + caCountN + " added</dd></div></div>";
-    if (files.length) html += '<div class="g8d-review__block"><div><dt>Attachments</dt><dd>' + files.length + " file(s) selected</dd></div></div>";
     reviewEl.innerHTML = html || '<div class="g8d-review__block"><div><dt>No details yet</dt><dd>Go back and fill in the disciplines that apply.</dd></div></div>';
   }
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
-  }
-
-  /* -------------------------------------------------------- file upload --- */
-  function fmtSize(n) {
-    if (n >= 1048576) return (n / 1048576).toFixed(1) + " MB";
-    return Math.max(1, Math.round(n / 1024)) + " KB";
-  }
-  function extOf(name) {
-    var m = /\.([a-z0-9]+)$/i.exec(name || "");
-    return m ? m[1].toLowerCase() : "";
-  }
-  function syncInput() {
-    try {
-      var dt = new DataTransfer();
-      files.forEach(function (f) { dt.items.add(f); });
-      fileInput.files = dt.files;
-    } catch (e) { /* older browsers: input keeps its own last selection */ }
-  }
-  function renderFileList() {
-    fileList.textContent = "";
-    if (!files.length) { fileList.hidden = true; return; }
-    fileList.hidden = false;
-    files.forEach(function (f, i) {
-      var li = document.createElement("li");
-      li.className = "srq-file";
-      var name = document.createElement("span");
-      name.className = "srq-file__name";
-      name.textContent = f.name;
-      var size = document.createElement("span");
-      size.className = "srq-file__size";
-      size.textContent = fmtSize(f.size);
-      var rm = document.createElement("button");
-      rm.type = "button";
-      rm.className = "srq-file__rm";
-      rm.setAttribute("aria-label", "Remove " + f.name);
-      rm.textContent = "×";
-      rm.addEventListener("click", function () { files.splice(i, 1); syncInput(); renderFileList(); });
-      li.appendChild(name); li.appendChild(size); li.appendChild(rm);
-      fileList.appendChild(li);
-    });
-  }
-  function addFiles(fileListLike) {
-    if (docsErr) docsErr.textContent = "";
-    var incoming = Array.prototype.slice.call(fileListLike || []);
-    var rejected = [];
-    incoming.forEach(function (f) {
-      if (files.length >= MAX_FILES) { rejected.push(f.name + " (max " + MAX_FILES + " files)"); return; }
-      if (OK_EXT.indexOf(extOf(f.name)) === -1) { rejected.push(f.name + " (type not allowed)"); return; }
-      if (f.size > MAX_FILE_MB * 1024 * 1024) { rejected.push(f.name + " (over " + MAX_FILE_MB + " MB)"); return; }
-      var dup = files.some(function (x) { return x.name === f.name && x.size === f.size; });
-      if (dup) return;
-      files.push(f);
-    });
-    if (rejected.length && docsErr) docsErr.textContent = "Skipped: " + rejected.join(", ") + ".";
-    syncInput();
-    renderFileList();
-  }
-  if (fileInput) fileInput.addEventListener("change", function () { addFiles(fileInput.files); });
-  if (drop) {
-    ["dragenter", "dragover"].forEach(function (ev) {
-      drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("is-drag"); });
-    });
-    ["dragleave", "drop"].forEach(function (ev) {
-      drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove("is-drag"); });
-    });
-    drop.addEventListener("drop", function (e) { if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files); });
-    drop.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fileInput.click(); } });
   }
 
   /* ------------------------------------------------------- Formspree body -- */
@@ -414,6 +335,159 @@
     return fd;
   }
 
+  /* -------------------------------------------------------- PDF report --- */
+  // Built entirely in the browser with jsPDF (no backend) and downloaded to
+  // the visitor's own device — this Formspree plan rejects any submission
+  // that includes a file, so the PDF cannot be emailed as an attachment.
+  // Mirrors the branded report the old server used to generate with pdfkit.
+  function buildG8DPdfDoc(data) {
+    if (!window.jspdf || !window.jspdf.jsPDF) return null;
+    var doc = new window.jspdf.jsPDF({ unit: "pt", format: "a4" });
+    var M = 40;
+    var pageW = doc.internal.pageSize.getWidth();
+    var pageH = doc.internal.pageSize.getHeight();
+    var y = 90;
+
+    function ensureSpace(h) {
+      if (y + h > pageH - 40) { doc.addPage(); y = 40; }
+    }
+    function line(label, value) {
+      if (value == null || value === "") return;
+      ensureSpace(26);
+      doc.setFont("helvetica", "bold"); doc.setFontSize(8); doc.setTextColor(94, 107, 98);
+      doc.text(String(label).toUpperCase(), M, y); y += 12;
+      doc.setFont("helvetica", "normal"); doc.setFontSize(10.5); doc.setTextColor(4, 54, 31);
+      var lines = doc.splitTextToSize(String(value), pageW - M * 2);
+      lines.forEach(function (l) { ensureSpace(14); doc.text(l, M, y); y += 14; });
+      y += 4;
+    }
+    function sectionHead(idx, title) {
+      ensureSpace(30);
+      y += 6;
+      doc.setFillColor(234, 241, 236); doc.rect(M, y, pageW - M * 2, 20, "F");
+      doc.setFont("helvetica", "bold"); doc.setFontSize(10.5); doc.setTextColor(0, 117, 58);
+      doc.text(idx + "  —  " + title, M + 6, y + 14);
+      y += 30;
+      doc.setTextColor(4, 54, 31);
+    }
+
+    // header band
+    doc.setFillColor(4, 54, 31); doc.rect(0, 0, pageW, 70, "F");
+    doc.setTextColor(255, 255, 255); doc.setFont("helvetica", "bold"); doc.setFontSize(18);
+    doc.text("EnergySYS", M, 32);
+    doc.setFont("helvetica", "normal"); doc.setFontSize(10); doc.setTextColor(134, 227, 172);
+    doc.text("G8D Wind Farm Service Request Report", M, 50);
+
+    doc.setTextColor(4, 54, 31); doc.setFont("helvetica", "bold"); doc.setFontSize(13);
+    var d2 = data.d2 || {};
+    doc.text((d2.wind_farm_name || "Wind farm") + (d2.turbine_id ? " — " + d2.turbine_id : ""), M, y);
+    y += 16;
+    doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(94, 107, 98);
+    doc.text("Generated " + new Date().toLocaleString(), M, y);
+    y += 20;
+    doc.setTextColor(4, 54, 31);
+
+    var d1 = data.d1 || {};
+    sectionHead("D1", "Establish the Team");
+    line("Team Leader", d1.team_leader);
+    line("D-Team", d1.d_team);
+    if ((d1.team_members || []).length) {
+      line("Team Members", d1.team_members.map(function (m) { return (m.name || "") + (m.role ? " (" + m.role + ")" : ""); }).filter(Boolean).join(", "));
+    }
+    line("Company Name", d1.company_name);
+    line("Contact Person", d1.contact_person);
+    line("Email", d1.email);
+    line("Phone", d1.phone);
+    line("Service Engineer", d1.service_engineer);
+
+    sectionHead("D2", "Describe the Problem");
+    line("Wind Farm Name", d2.wind_farm_name);
+    line("Wind Farm Location", d2.wind_farm_location);
+    line("Turbine ID", d2.turbine_id);
+    line("OEM / Manufacturer", d2.oem_manufacturer);
+    line("Turbine Model", d2.turbine_model);
+    line("Serial Number", d2.serial_number);
+    line("Component / System", d2.component_system);
+    line("Failure Date", d2.failure_date);
+    line("Number of Units Affected", d2.units_affected);
+    line("Current Turbine Status", d2.turbine_status);
+    line("Failure Category", d2.failure_category);
+    line("Fault / Error Code", d2.fault_error_code);
+    line("Detailed Problem Description", d2.problem_description);
+
+    var d3 = data.d3 || {};
+    sectionHead("D3", "Interim Containment Action");
+    line("Immediate Action Taken", d3.immediate_action);
+    line("Turbine Shutdown", d3.turbine_shutdown);
+    line("Temporary Repair", d3.temporary_repair);
+    line("Temporary Solution", d3.temporary_solution);
+    line("Downtime", d3.downtime);
+    line("Safety Risk", d3.safety_risk);
+    line("Containment Details", d3.containment_details);
+
+    var d4 = data.d4 || {};
+    sectionHead("D4", "Root Cause Analysis");
+    [1, 2, 3, 4, 5].forEach(function (n) { line("Why " + n, d4["why" + n]); });
+    line("Suspected Root Cause", d4.suspected_root_cause);
+    line("Confirmed Root Cause", d4.confirmed_root_cause);
+    line("Failure Mechanism", d4.failure_mechanism);
+    line("Root Cause Category", d4.root_cause_category);
+
+    sectionHead("D5", "Permanent Corrective Action");
+    var actions = (data.d5 && data.d5.corrective_actions) || [];
+    if (!actions.length) {
+      ensureSpace(16);
+      doc.setFont("helvetica", "normal"); doc.setFontSize(10); doc.setTextColor(94, 107, 98);
+      doc.text("No corrective actions recorded yet.", M, y); y += 18;
+      doc.setTextColor(4, 54, 31);
+    }
+    actions.forEach(function (a, i) {
+      ensureSpace(16);
+      doc.setFont("helvetica", "bold"); doc.setFontSize(10); doc.setTextColor(0, 117, 58);
+      doc.text("Action " + (i + 1), M, y); y += 14;
+      doc.setTextColor(4, 54, 31);
+      CA_FIELDS.forEach(function (f) { line(f[1], a[f[0]]); });
+    });
+
+    var d6 = data.d6 || {};
+    sectionHead("D6", "Implement & Validate Corrective Action");
+    line("Corrective Action Implemented", d6.action_implemented);
+    line("Implementation Date", d6.implementation_date);
+    line("Implemented By", d6.implemented_by);
+    line("Validation Method", d6.validation_method);
+    line("Test Performed", d6.test_performed);
+    line("Test Result", d6.test_result);
+    line("Turbine Returned to Service", d6.returned_to_service);
+    line("Performance After Repair", d6.performance_after_repair);
+    line("Monitoring Period", d6.monitoring_period);
+    line("Validation Comments", d6.validation_comments);
+
+    var d7 = data.d7 || {};
+    sectionHead("D7", "Prevent Recurrence");
+    line("Preventive Action", d7.preventive_action);
+    line("Maintenance Procedure Updated", d7.maintenance_procedure_updated);
+    line("Inspection Frequency Changed", d7.inspection_frequency_changed);
+    line("Spare Parts Specification Updated", d7.spare_parts_spec_updated);
+    line("Design Change Required", d7.design_change_required);
+    line("Supplier / OEM Action", d7.supplier_oem_action);
+    line("Training Required", d7.training_required);
+    line("Documentation Updated", d7.documentation_updated);
+    line("Similar Turbines Inspected", d7.similar_turbines_inspected);
+    line("Lessons Learned", d7.lessons_learned);
+
+    var d8 = data.d8 || {};
+    sectionHead("D8", "Closure & Recognition");
+    line("G8D Completion Date", d8.completion_date);
+    line("Final Problem Status", d8.final_status);
+    line("Final Verification", d8.final_verification);
+    line("Customer Approval", d8.customer_approval);
+    line("Customer Comments", d8.customer_comments);
+    line("Service Engineer Approval", d8.service_engineer_approval);
+    line("Team Leader Approval", d8.team_leader_approval);
+
+    return doc;
+  }
+
   /* ------------------------------------------------------------- submit --- */
   function btnState(s) {
     if (!submitBtn) return;
@@ -454,7 +528,6 @@
     fd.append("_subject", "New G8D Service Request — " + (data.d2.wind_farm_name || "Wind Farm") + (data.d2.turbine_id ? " / " + data.d2.turbine_id : ""));
     fd.append("page", location.pathname + location.search);
     fd.append("_gotcha", (honeypot && honeypot.value) || ""); // Formspree honeypot
-    files.forEach(function (f, i) { fd.append("attachment_" + (i + 1), f, f.name); });
 
     sending = true;
     btnState("loading");
@@ -471,6 +544,10 @@
         if (r.res.ok) {
           btnState("success");
           var finalStatus = (data.d8.final_status === "Closed") ? "Closed" : "D8";
+          try {
+            var pdfDoc = buildG8DPdfDoc(data);
+            if (pdfDoc) pdfDoc.save("G8D-Report.pdf");
+          } catch (pdfErr) { /* PDF is a courtesy download; never block success on it */ }
           setTimeout(function () {
             form.hidden = true;
             if (tracker) tracker.hidden = true;

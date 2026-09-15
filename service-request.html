@@ -132,7 +132,7 @@
           <li data-step="5"><button type="button"><span class="g8d-tracker__dot">D6</span><span class="g8d-tracker__label">Validate</span></button></li>
           <li data-step="6"><button type="button"><span class="g8d-tracker__dot">D7</span><span class="g8d-tracker__label">Prevent</span></button></li>
           <li data-step="7"><button type="button"><span class="g8d-tracker__dot">D8</span><span class="g8d-tracker__label">Closure</span></button></li>
-          <li data-step="8"><button type="button"><span class="g8d-tracker__dot">✓</span><span class="g8d-tracker__label">Attach &amp; Submit</span></button></li>
+          <li data-step="8"><button type="button"><span class="g8d-tracker__dot">✓</span><span class="g8d-tracker__label">Review &amp; Submit</span></button></li>
         </ol>
       </nav>
 
@@ -631,20 +631,6 @@
 
         <div class="g8d-step" data-step="8" hidden>
           <div class="g8d-card">
-            <h2><span class="g8d-card__idx">·</span> Upload Documents</h2>
-            <p class="g8d-card__hint">Photos, videos, inspection reports, fault logs, maintenance reports, test reports, technical drawings or any other supporting file. Up to 12 files, 25 MB each.</p>
-            <label class="srq-drop" id="g8d-drop" tabindex="0">
-              <input id="g8d-docs" name="attachments" type="file" multiple
-                accept=".pdf,.jpg,.jpeg,.png,.webp,.gif,.heic,.mp4,.mov,.avi,.mkv,.webm,.doc,.docx,.xls,.xlsx,.csv,.txt,.rtf,.dwg,.dxf,.zip,.7z,.rar">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M8 8l4-4 4 4"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-              <b>Click to choose files, or drop them here</b>
-              <span>Nothing is uploaded until you submit.</span>
-            </label>
-            <ul class="srq-filelist" id="g8d-filelist" hidden></ul>
-            <span class="field__err" id="g8d-docs-err" aria-live="polite"></span>
-          </div>
-
-          <div class="g8d-card">
             <h2><span class="g8d-card__idx">·</span> Review</h2>
             <p class="g8d-card__hint">A quick summary before you submit. Use Back to change anything.</p>
             <dl class="g8d-review" id="g8d-review"></dl>
@@ -676,7 +662,7 @@
           <path class="query-success__tick" fill="none" d="M14 27 l8 8 l16 -18"/>
         </svg>
         <h3>G8D Service Request Submitted Successfully</h3>
-        <p>Your G8D wind farm service request has been received — our team will review it and take it forward through the remaining disciplines.</p>
+        <p>Your G8D wind farm service request has been received — our team will review it and take it forward through the remaining disciplines. A PDF copy of your report has also been downloaded to this device for your own records.</p>
         <dl class="g8d-success__grid">
           <div><dt>Submission Date</dt><dd id="g8d-res-date">—</dd></div>
           <div><dt>G8D Status</dt><dd id="g8d-res-status">—</dd></div>
@@ -751,6 +737,7 @@
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/particles.js" defer></script>
 <script src="assets/js/motion.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 <script src="assets/js/g8d-request.js" defer></script>
 <script>
 /* Service menu — inline fallback so Wind/Solar works even if main.js is blocked/cached */
