@@ -291,6 +291,7 @@
       });
       fd.append("ref", param("ref") || "");
       fd.append("page", location.pathname + location.search);
+      fd.append("_subject", "New Website Query — " + (subjectEl.value || "EnergySYS"));
       if (fileInput && fileInput.files && fileInput.files[0]) {
         fd.append("attachment", fileInput.files[0], fileInput.files[0].name);
       }
@@ -299,14 +300,17 @@
       btnState("loading");
       showStatus("ok", "Sending your query…");
 
-      fetch(form.getAttribute("action") || "/api/send-query", { method: "POST", body: fd })
+      fetch(form.getAttribute("action"), {
+        method: "POST",
+        body: fd,
+        headers: { "Accept": "application/json" }
+      })
         .then(function (res) {
           return res.json().catch(function () { return {}; }).then(function (data) { return { res: res, data: data }; });
         })
         .then(function (r) {
           sending = false;
-          var data = r.data || {};
-          if (r.res.ok && data.success) {
+          if (r.res.ok) {
             btnState("success");
             setTimeout(function () {
               form.hidden = true;
@@ -319,22 +323,13 @@
               clearFile();
               btnState("normal");
             }, 750);
-          } else if (data.fields) {
-            btnState("normal");
-            Object.keys(data.fields).forEach(function (k) {
-              var el = form.elements[k] || (k === "attachment" ? fileInput : null);
-              if (el) setError(el, data.fields[k]);
-            });
-            showStatus("err", data.message || "Please complete the required fields.");
-          } else if (r.res.status === 429) {
-            btnState("normal");
-            showStatus("err", data.message || "Too many queries — please try again in a little while.");
-          } else if (r.res.status === 400) {
-            btnState("normal");
-            showStatus("err", data.message || "Please check your details and try again.");
           } else {
             btnState("normal");
-            showStatus("err", "<strong>Unable to Send Query.</strong> Something went wrong while sending your query. Please try again.");
+            var errs = (r.data && r.data.errors) || [];
+            var msg = errs.length
+              ? errs.map(function (e) { return e.message; }).join(" ")
+              : "Please check your details and try again.";
+            showStatus("err", "<strong>Unable to Send Query.</strong> " + msg);
           }
         })
         .catch(function () {

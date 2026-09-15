@@ -119,6 +119,18 @@
           </span>
         </li>
         <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span><b>Address — RENSO</b>
+            EnergySYS / RENSO,<br>
+            163/1 Mariamman Kovil Thottam,<br>
+            Near TEXSTAR, Ganapathy,<br>
+            Coimbatore – 641006,<br>
+            Tamil Nadu, India<br>
+            M# 9940247490, P# 0422 352 9054<br>
+            GSTIN: 33ANRP 6231A1ZK
+          </span>
+        </li>
+        <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5c0 9 6 15 15 15l0-4-4-2-2 2a12 12 0 0 1-5-5l2-2-2-4z"/></svg>
           <span><b>Phone</b><a href="tel:+919940247490">+91 99402 47490</a></span>
         </li>
@@ -145,15 +157,14 @@
       <p class="eyebrow">Send a query</p>
 
       <!--
-        SEND QUERY — posts (multipart/form-data) to the bundled Node server
-        (server/enquiry.js) at POST /api/send-query. The server validates, stores a
-        copy in SQLite, and emails the query + attachment to QUERY_RECEIVER_EMAIL
-        (kavinprasad887@gmail.com). Run the site with `npm start`.
-        Recipient + SMTP credentials live only in server/.env — never in this file.
-        If the server is unreachable, submit falls back to the visitor's email app.
+        SEND QUERY — posts (multipart/form-data) straight to Formspree
+        (https://formspree.io/f/myeyrqzy). No backend involved: Formspree
+        validates, filters spam and emails the query + attachment directly
+        to whatever inbox that Formspree form is configured to deliver to.
+        If Formspree is unreachable, submit falls back to the visitor's email app.
       -->
-      <form id="enquiry-form" action="/api/send-query" method="POST"
-            enctype="multipart/form-data" data-fallback-email="kavinprasad887@gmail.com" novalidate>
+      <form id="enquiry-form" action="https://formspree.io/f/myeyrqzy" method="POST"
+            enctype="multipart/form-data" data-fallback-email="rds@esys.co.in" novalidate>
 
         <p class="form-status" role="status" aria-live="polite" hidden></p>
 

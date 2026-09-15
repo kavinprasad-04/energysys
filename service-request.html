@@ -110,16 +110,16 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
           Back to Home
         </a>
-        <span class="g8d-draftline" id="g8d-draftline" hidden>Draft <b id="g8d-draft-ref"></b> · saved <span id="g8d-draft-saved">—</span></span>
       </div>
 
       <!--
         G8D WIND FARM SERVICE REQUEST — an 8-discipline (8D) problem-solving form.
-        Drafts:  POST/GET /api/g8d/draft  (server/g8d.js) — JSON, no files, resumable via ?draft=<id>.
-        Submit:  POST /api/g8d/submit (multipart/form-data) — validates, stores in SQLite
-        (g8d_requests / g8d_files), saves uploads under server/uploads/g8d/, emails
-        SERVICE_REQUEST_TO and generates a PDF at GET /api/g8d/report/<id>.pdf.
-        Recipient + SMTP credentials live only in server/.env — never in this file.
+        Submits (multipart/form-data) straight to Formspree
+        (https://formspree.io/f/myeyrqzy). No backend involved: Formspree
+        validates, filters spam and emails the full G8D report + attachments
+        directly to whatever inbox that Formspree form is configured to deliver to.
+        There is no server-side draft save/resume or PDF report with this setup —
+        fill and submit the wizard in one sitting.
       -->
 
       <nav class="g8d-tracker" id="g8d-tracker" aria-label="G8D progress">
@@ -136,7 +136,7 @@
         </ol>
       </nav>
 
-      <form id="g8d-form" novalidate>
+      <form id="g8d-form" action="https://formspree.io/f/myeyrqzy" method="POST" enctype="multipart/form-data" novalidate>
         <p class="form-status" role="status" aria-live="polite" hidden></p>
 
         <div class="g8d-step is-active" data-step="0">
@@ -652,14 +652,13 @@
 
           <div class="field is-full" hidden aria-hidden="true">
             <label for="g8d-website">Leave this field empty</label>
-            <input id="g8d-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            <input id="g8d-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
           </div>
         </div>
 
         <div class="g8d-nav">
           <button type="button" class="btn btn--ghost" id="g8d-back" disabled>← Back</button>
           <div class="g8d-nav__right">
-            <button type="button" class="btn btn--ghost" id="g8d-save-draft">Save Draft</button>
             <button type="button" class="btn btn--primary" id="g8d-next">Next →</button>
             <button class="btn btn--primary btn--send" type="submit" id="g8d-submit" hidden data-label="SUBMIT G8D SERVICE REQUEST">
               <span class="btn--send__text">SUBMIT G8D SERVICE REQUEST</span>
@@ -679,14 +678,12 @@
         <h3>G8D Service Request Submitted Successfully</h3>
         <p>Your G8D wind farm service request has been received — our team will review it and take it forward through the remaining disciplines.</p>
         <dl class="g8d-success__grid">
-          <div><dt>Service Request ID</dt><dd id="g8d-res-id">—</dd></div>
           <div><dt>Submission Date</dt><dd id="g8d-res-date">—</dd></div>
           <div><dt>G8D Status</dt><dd id="g8d-res-status">—</dd></div>
           <div><dt>Current Discipline</dt><dd id="g8d-res-discipline">—</dd></div>
         </dl>
         <p style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-          <a class="btn btn--primary btn--sm" id="g8d-download" href="#" target="_blank" rel="noopener">Download G8D Report</a>
-          <button type="button" class="btn btn--ghost btn--sm" id="g8d-again">Submit another request</button>
+          <button type="button" class="btn btn--primary btn--sm" id="g8d-again">Submit another request</button>
           <a class="btn btn--ghost btn--sm" href="index.html">Back to Home</a>
         </p>
       </div>

@@ -1,7 +1,8 @@
 /* EnergySYS — G8D Wind Farm Service Request wizard (service-request.html).
    Step-by-step D1..D8 + Attachments/Review, team-member & corrective-action
-   repeaters, server-saved resumable drafts, multipart submit, PDF download.
-   Talks to /api/g8d/draft, /api/g8d/draft/:id, /api/g8d/submit. */
+   repeaters, multipart submit straight to Formspree (https://formspree.io/f/myeyrqzy).
+   No backend involved: no draft save/resume, no PDF report — fill and submit
+   the wizard in one sitting. */
 (function () {
   "use strict";
 
@@ -18,21 +19,16 @@
     "dwg", "dxf", "zip", "7z", "rar"
   ];
   var STEP_COUNT = 9; // 0..7 = D1..D8, 8 = attachments + review
-  var DISCIPLINE_OF_STEP = ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "Closed"];
 
   var tracker = document.getElementById("g8d-tracker");
   var trackerItems = tracker ? Array.prototype.slice.call(tracker.querySelectorAll("li[data-step]")) : [];
   var stepEls = Array.prototype.slice.call(form.querySelectorAll(".g8d-step[data-step]"));
   var backBtn = document.getElementById("g8d-back");
   var nextBtn = document.getElementById("g8d-next");
-  var saveDraftBtn = document.getElementById("g8d-save-draft");
   var submitBtn = document.getElementById("g8d-submit");
   var submitText = submitBtn && submitBtn.querySelector(".btn--send__text");
   var submitSpin = submitBtn && submitBtn.querySelector(".btn--send__spin");
   var status = form.querySelector(".form-status");
-  var draftline = document.getElementById("g8d-draftline");
-  var draftRefEl = document.getElementById("g8d-draft-ref");
-  var draftSavedEl = document.getElementById("g8d-draft-saved");
 
   var teamRows = document.getElementById("g8d-team-rows");
   var teamAdd = document.getElementById("g8d-team-add");
@@ -44,20 +40,17 @@
   var drop = document.getElementById("g8d-drop");
   var fileList = document.getElementById("g8d-filelist");
   var docsErr = document.getElementById("g8d-docs-err");
+  var honeypot = document.getElementById("g8d-website");
 
   var successPanel = document.getElementById("g8d-success");
-  var resId = document.getElementById("g8d-res-id");
   var resDate = document.getElementById("g8d-res-date");
   var resStatus = document.getElementById("g8d-res-status");
   var resDiscipline = document.getElementById("g8d-res-discipline");
-  var downloadLink = document.getElementById("g8d-download");
   var againBtn = document.getElementById("g8d-again");
 
   var currentStep = 0;
   var maxStepReached = 0;
-  var draftId = "";
   var sending = false;
-  var savingDraft = false;
   var files = [];
 
   /* ------------------------------------------------------------ helpers --- */
@@ -66,10 +59,6 @@
     var slot = wrap ? wrap.querySelector(".field__err") : null;
     if (msg) { if (wrap) wrap.setAttribute("data-error", "true"); if (slot) slot.textContent = msg; }
     else { if (wrap) wrap.removeAttribute("data-error"); if (slot) slot.textContent = ""; }
-  }
-  function clearErrorsIn(root) {
-    root.querySelectorAll(".field[data-error]").forEach(function (w) { w.removeAttribute("data-error"); });
-    root.querySelectorAll(".field__err").forEach(function (s) { s.textContent = ""; });
   }
   function showStatus(state, msg) {
     if (!status) return;
@@ -354,96 +343,75 @@
     drop.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fileInput.click(); } });
   }
 
-  /* --------------------------------------------------------- save draft --- */
-  function markDraftSaved(id) {
-    draftId = id;
-    if (draftline) draftline.hidden = false;
-    if (draftRefEl) draftRefEl.textContent = id;
-    if (draftSavedEl) draftSavedEl.textContent = "just now";
-    var url = new URL(window.location.href);
-    url.searchParams.set("draft", id);
-    window.history.replaceState(null, "", url.toString());
-  }
+  /* ------------------------------------------------------- Formspree body -- */
+  // Flattened, human-readable field labels — Formspree just lists whatever
+  // fields it receives in the notification email, so raw JSON blobs would be
+  // unreadable there. Field-name dictionary matches the wizard's own inputs.
+  var FIELD_LABELS = {
+    d1: [
+      ["team_leader", "Team Leader"], ["d_team", "D-Team"], ["company_name", "Company Name"],
+      ["contact_person", "Contact Person"], ["email", "Email"], ["phone", "Phone"], ["service_engineer", "Service Engineer"]
+    ],
+    d2: [
+      ["wind_farm_name", "Wind Farm Name"], ["wind_farm_location", "Wind Farm Location"], ["turbine_id", "Turbine ID"],
+      ["oem_manufacturer", "OEM / Manufacturer"], ["turbine_model", "Turbine Model"], ["serial_number", "Serial Number"],
+      ["component_system", "Component / System"], ["failure_date", "Failure Date"], ["units_affected", "Number of Units Affected"],
+      ["turbine_status", "Current Turbine Status"], ["failure_category", "Failure Category"], ["fault_error_code", "Fault / Error Code"],
+      ["problem_description", "Detailed Problem Description"]
+    ],
+    d3: [
+      ["immediate_action", "Immediate Action Taken"], ["turbine_shutdown", "Turbine Shutdown"], ["temporary_repair", "Temporary Repair"],
+      ["temporary_solution", "Temporary Solution"], ["downtime", "Downtime"], ["safety_risk", "Safety Risk"], ["containment_details", "Containment Details"]
+    ],
+    d4: [
+      ["why1", "Why 1"], ["why2", "Why 2"], ["why3", "Why 3"], ["why4", "Why 4"], ["why5", "Why 5"],
+      ["suspected_root_cause", "Suspected Root Cause"], ["confirmed_root_cause", "Confirmed Root Cause"],
+      ["failure_mechanism", "Failure Mechanism"], ["root_cause_category", "Root Cause Category"]
+    ],
+    d6: [
+      ["action_implemented", "Corrective Action Implemented"], ["implementation_date", "Implementation Date"], ["implemented_by", "Implemented By"],
+      ["validation_method", "Validation Method"], ["test_performed", "Test Performed"], ["test_result", "Test Result"],
+      ["returned_to_service", "Turbine Returned to Service"], ["performance_after_repair", "Performance After Repair"],
+      ["monitoring_period", "Monitoring Period"], ["validation_comments", "Validation Comments"]
+    ],
+    d7: [
+      ["preventive_action", "Preventive Action"], ["maintenance_procedure_updated", "Maintenance Procedure Updated"],
+      ["inspection_frequency_changed", "Inspection Frequency Changed"], ["spare_parts_spec_updated", "Spare Parts Specification Updated"],
+      ["design_change_required", "Design Change Required"], ["supplier_oem_action", "Supplier / OEM Action"],
+      ["training_required", "Training Required"], ["documentation_updated", "Documentation Updated"],
+      ["similar_turbines_inspected", "Similar Turbines Inspected"], ["lessons_learned", "Lessons Learned"]
+    ],
+    d8: [
+      ["completion_date", "G8D Completion Date"], ["final_status", "Final Problem Status"], ["final_verification", "Final Verification"],
+      ["customer_approval", "Customer Approval"], ["customer_comments", "Customer Comments"],
+      ["service_engineer_approval", "Service Engineer Approval"], ["team_leader_approval", "Team Leader Approval"]
+    ]
+  };
+  var DISCIPLINE_TITLES = {
+    d1: "D1 — Establish the Team", d2: "D2 — Describe the Problem", d3: "D3 — Interim Containment Action",
+    d4: "D4 — Root Cause Analysis", d6: "D6 — Implement & Validate Corrective Action",
+    d7: "D7 — Prevent Recurrence", d8: "D8 — Closure & Recognition"
+  };
 
-  if (saveDraftBtn) {
-    saveDraftBtn.addEventListener("click", function () {
-      if (savingDraft) return;
-      savingDraft = true;
-      var prevLabel = saveDraftBtn.textContent;
-      saveDraftBtn.textContent = "Saving…";
-      saveDraftBtn.disabled = true;
-      var data = gatherAll();
-      var payload = Object.assign({}, data, {
-        draft_id: draftId || undefined,
-        current_discipline: DISCIPLINE_OF_STEP[currentStep] || "D1",
-        page: location.pathname + location.search
+  function buildFormspreeData(data) {
+    var fd = new FormData();
+    Object.keys(FIELD_LABELS).forEach(function (disc) {
+      var title = DISCIPLINE_TITLES[disc];
+      var d = data[disc] || {};
+      FIELD_LABELS[disc].forEach(function (pair) {
+        var val = d[pair[0]];
+        if (val) fd.append(title + " — " + pair[1], val);
       });
-      fetch("/api/g8d/draft", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      })
-        .then(function (res) { return res.json().catch(function () { return {}; }); })
-        .then(function (data) {
-          savingDraft = false;
-          saveDraftBtn.disabled = false;
-          saveDraftBtn.textContent = prevLabel;
-          if (data && data.success) {
-            markDraftSaved(data.draftId);
-            showStatus("ok", "Draft saved. You can come back to this exact link to resume.");
-          } else {
-            showStatus("err", (data && data.message) || "Could not save the draft — please try again.");
-          }
-        })
-        .catch(function () {
-          savingDraft = false;
-          saveDraftBtn.disabled = false;
-          saveDraftBtn.textContent = prevLabel;
-          showStatus("err", "Could not reach the server to save the draft.");
-        });
     });
-  }
-
-  /* ------------------------------------------------------------- resume --- */
-  function fillStepFrom(n, data) {
-    var stepEl = stepEls[n];
-    stepEl.querySelectorAll("[name]").forEach(function (el) {
-      if (el.closest("[data-row]")) return;
-      if (Object.prototype.hasOwnProperty.call(data, el.name)) el.value = data[el.name] || "";
+    (data.d1.team_members || []).forEach(function (m, i) {
+      if (m.name || m.role) fd.append("D1 — Team Member " + (i + 1), (m.name || "") + (m.role ? " (" + m.role + ")" : ""));
     });
-  }
-  function loadDraft(id) {
-    fetch("/api/g8d/draft/" + encodeURIComponent(id))
-      .then(function (res) { return res.json().catch(function () { return {}; }); })
-      .then(function (payload) {
-        if (!payload || !payload.success) {
-          showStatus("err", "That draft link could not be found. Starting a new request.");
-          return;
-        }
-        var r = payload.request;
-        draftId = r.publicId;
-        if (draftline) { draftline.hidden = false; draftRefEl.textContent = draftId; draftSavedEl.textContent = "resumed"; }
-        fillStepFrom(0, r.d1 || {});
-        teamRows.innerHTML = ""; teamCount = 0;
-        var members = (r.d1 && r.d1.team_members) || [];
-        if (members.length) members.forEach(function (m) { addTeamRow(m); }); else addTeamRow();
-        fillStepFrom(1, r.d2 || {});
-        fillStepFrom(2, r.d3 || {});
-        fillStepFrom(3, r.d4 || {});
-        caRows.innerHTML = ""; caCount = 0;
-        var actions = (r.d5 && r.d5.corrective_actions) || [];
-        if (actions.length) actions.forEach(function (a) { addCARow(a); }); else addCARow();
-        fillStepFrom(5, r.d6 || {});
-        fillStepFrom(6, r.d7 || {});
-        fillStepFrom(7, r.d8 || {});
-        var idx = DISCIPLINE_OF_STEP.indexOf(r.currentDiscipline);
-        maxStepReached = idx >= 0 ? Math.min(idx, STEP_COUNT - 1) : 0;
-        showStep(maxStepReached);
-        showStatus("ok", "Resumed your saved draft " + draftId + ".");
-      })
-      .catch(function () {
-        showStatus("err", "Could not reach the server to load that draft.");
-      });
+    (data.d5.corrective_actions || []).forEach(function (a, i) {
+      var parts = [];
+      CA_FIELDS.forEach(function (f) { if (a[f[0]]) parts.push(f[1] + ": " + a[f[0]]); });
+      if (parts.length) fd.append("D5 — Corrective Action " + (i + 1), parts.join(" | "));
+    });
+    return fd;
   }
 
   /* ------------------------------------------------------------- submit --- */
@@ -466,12 +434,6 @@
     }
   }
 
-  function stepIndexForName(name) {
-    var map = { d1: 0, d2: 1, d3: 2, d4: 3, d5: 4, d6: 5, d7: 6, d8: 7 };
-    var disc = name.split(".")[0];
-    return map[disc] != null ? map[disc] : 0;
-  }
-
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     if (sending) return;
@@ -487,60 +449,51 @@
     }
 
     var data = gatherAll();
-    var fd = new FormData();
-    Object.keys(data).forEach(function (k) { fd.append(k, JSON.stringify(data[k])); });
-    if (draftId) fd.append("draft_id", draftId);
+    var fd = buildFormspreeData(data);
+    fd.append("email", data.d1.email || ""); // Formspree auto-detects this as Reply-To
+    fd.append("_subject", "New G8D Service Request — " + (data.d2.wind_farm_name || "Wind Farm") + (data.d2.turbine_id ? " / " + data.d2.turbine_id : ""));
     fd.append("page", location.pathname + location.search);
-    fd.append("website", ""); // honeypot
-    files.forEach(function (f) { fd.append("attachments", f, f.name); });
+    fd.append("_gotcha", (honeypot && honeypot.value) || ""); // Formspree honeypot
+    files.forEach(function (f, i) { fd.append("attachment_" + (i + 1), f, f.name); });
 
     sending = true;
     btnState("loading");
     showStatus("ok", "Submitting your G8D service request…");
 
-    fetch("/api/g8d/submit", { method: "POST", body: fd })
+    fetch(form.getAttribute("action"), {
+      method: "POST",
+      body: fd,
+      headers: { "Accept": "application/json" }
+    })
       .then(function (res) { return res.json().catch(function () { return {}; }).then(function (data) { return { res: res, data: data }; }); })
       .then(function (r) {
         sending = false;
-        var data = r.data || {};
-        if (r.res.ok && data.success) {
+        if (r.res.ok) {
           btnState("success");
+          var finalStatus = (data.d8.final_status === "Closed") ? "Closed" : "D8";
           setTimeout(function () {
             form.hidden = true;
             if (tracker) tracker.hidden = true;
             hideStatus();
             if (successPanel) {
-              if (resId) resId.textContent = data.reference || "—";
-              if (resDate) resDate.textContent = data.submittedAt ? new Date(data.submittedAt).toLocaleString() : new Date().toLocaleString();
-              if (resStatus) resStatus.textContent = data.status || "Submitted";
-              if (resDiscipline) resDiscipline.textContent = data.currentDiscipline || "—";
-              if (downloadLink) downloadLink.href = data.reportUrl || "#";
+              if (resDate) resDate.textContent = new Date().toLocaleString();
+              if (resStatus) resStatus.textContent = "Submitted";
+              if (resDiscipline) resDiscipline.textContent = finalStatus;
               successPanel.hidden = false;
               successPanel.scrollIntoView({ behavior: "smooth", block: "center" });
             }
           }, 650);
-        } else if (data.fields) {
-          btnState("normal");
-          var firstKey = null;
-          Object.keys(data.fields).forEach(function (k) {
-            var name = k.split(".")[1];
-            var el = form.querySelector('[name="' + name + '"]');
-            if (el) { setError(el, data.fields[k]); if (!firstKey) firstKey = k; }
-          });
-          if (firstKey) showStep(stepIndexForName(firstKey));
-          showStatus("err", data.message || "Please complete the required fields.");
-        } else if (r.res.status === 429) {
-          btnState("normal");
-          showStatus("err", data.message || "Too many requests — please try again in a little while.");
         } else {
           btnState("normal");
-          showStatus("err", "<strong>Unable to submit.</strong> Please try again, or use Save Draft and retry shortly.");
+          var errs = (r.data && r.data.errors) || [];
+          var msg = errs.length ? errs.map(function (e) { return e.message; }).join(" ") : "Please try again.";
+          showStatus("err", "<strong>Unable to submit.</strong> " + msg);
         }
       })
       .catch(function () {
         sending = false;
         btnState("normal");
-        showStatus("err", "Could not reach the server. Your answers are still here — please try Submit again, or Save Draft.");
+        showStatus("err", "Could not reach Formspree. Your answers are still here — please check your connection and try Submit again.");
       });
   });
 
@@ -551,9 +504,5 @@
   /* -------------------------------------------------------------- init --- */
   addTeamRow();
   addCARow();
-
-  var params = new URLSearchParams(window.location.search);
-  var existingDraft = params.get("draft");
   showStep(0);
-  if (existingDraft) loadDraft(existingDraft);
 })();
