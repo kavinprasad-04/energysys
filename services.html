@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wind Services — EnergySYS manufacture, refurbishment, testing &amp; supply</title>
+<meta name="description" content="What EnergySYS does: manufacture wind turbine parts to drawing, refurbish and repair worn units, test and certify them, hold stock of common spares, reverse-engineer obsolete parts and support field failures.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/enhance.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<canvas id="tech-particles" aria-hidden="true"></canvas>
+<div class="tech-bg-fallback" aria-hidden="true"></div>
+
+<div class="topbar">
+  <div class="container topbar__inner">
+    <ul>
+      <li><a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a></li>
+      <li class="is-optional"><a href="mailto:rds@esys.co.in">rds@esys.co.in</a></li>
+    </ul>
+    <ul>
+      <li class="topbar__meta">Mon–Sat · 09:30–18:00 IST</li>
+      <li class="is-optional"><a href="#" aria-label="EnergySYS on LinkedIn">LinkedIn</a></li>
+    </ul>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.svg" alt="EnergySYS — home" width="210" height="44">
+      <span class="brand__sub">Wind&nbsp;turbine<br>parts&nbsp;&amp;&nbsp;service</span>
+    </a>
+    <form class="search" action="products.html" method="get" role="search">
+      <label class="visually-hidden" for="hdr-cat">Product category</label>
+      <select id="hdr-cat" name="category">
+        <option value="">All categories</option>
+        <option>Control Boards</option><option>Panels</option><option>Cables</option><option>Power Components</option>
+      </select>
+      <label class="visually-hidden" for="hdr-q">Search parts</label>
+      <input id="hdr-q" type="search" name="q" placeholder="Search a part or code…">
+      <button type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+    </form>
+    <a class="btn btn--primary header__cta" href="contact.html">Request a quote</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+  </div>
+</header>
+
+<nav class="nav" id="site-nav">
+  <div class="container">
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About&nbsp;Us</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li class="has-drop drop-click">
+        <a class="drop-toggle" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">Service
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="services.html" aria-current="page">Wind</a></li>
+          <li><a href="solar-service.html">Solar</a></li>
+        </ul>
+      </li>
+      <li class="has-drop">
+        <a href="resources.html">Resources
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="resources.html#clients">Clients</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="resources.html#careers">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="contact.html">Contact&nbsp;Us</a></li>
+    </ul>
+    <div class="nav__mobile-extra"><a class="btn btn--primary" href="contact.html">Request a quote</a></div>
+  </div>
+</nav>
+
+<main id="main">
+
+<section class="page-head page-head--photo">
+  <div class="media-cover" data-parallax="0.14">
+    <picture>
+      <source type="image/webp" srcset="assets/img/photos/wind-hills-800.webp 800w, assets/img/photos/wind-hills-1200.webp 1200w, assets/img/photos/wind-hills-1920.webp 1920w" sizes="100vw">
+      <img src="assets/img/photos/wind-hills-1200.jpg" srcset="assets/img/photos/wind-hills-800.jpg 800w, assets/img/photos/wind-hills-1200.jpg 1200w, assets/img/photos/wind-hills-1920.jpg 1920w" sizes="100vw" alt="" loading="eager" decoding="async" width="1920" height="1280">
+    </picture>
+  </div>
+  <div class="container">
+    <p class="eyebrow">Wind / service</p>
+    <h1>Wind services — manufacture, refurbishment, testing &amp; supply</h1>
+    <p>EnergySYS keeps wind turbines turning — parts made to drawing, worn units brought back to spec, everything tested and certified before it ships.</p>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span>Service<span>/</span>Wind</nav>
+  </div>
+</section>
+
+<!-- ============ SERVICE LINES ============ -->
+<section class="section" id="service-lines">
+  <div class="container split">
+    <div class="split__aside reveal">
+      <p class="eyebrow">Service lines / 01</p>
+      <h2>Six things we do.</h2>
+      <p>From a single machined part to a full refurbishment programme with held stock — scoped to the drawing and the turbine platform.</p>
+      <a class="link-arrow" href="contact.html">Talk to the workshop
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="reveal">
+      <div class="panel-grid">
+        <div class="panel">
+          <span class="panel__idx">S-01</span>
+          <h3>Manufacturing</h3>
+          <p>Machined and fabricated components to the OEM drawing or a reverse-engineered sample. Every part ships with a material certificate and a dimensional report against the controlling drawing.</p>
+        </div>
+        <div class="panel">
+          <span class="panel__idx">S-02</span>
+          <h3>Refurbishment &amp; repair</h3>
+          <p>Strip, clean, inspect, replace bearings, seals and wear parts, reassemble and test. Each unit returns with an inspection record — what was measured, what was replaced and the tests it passed.</p>
+        </div>
+        <div class="panel">
+          <span class="panel__idx">S-03</span>
+          <h3>Testing &amp; inspection</h3>
+          <p>Pressure and flow rigs for hydraulic units, electrical bench testing for slip rings and controls, dimensional and NDT checks. Results recorded and issued with the part.</p>
+        </div>
+        <div class="panel">
+          <span class="panel__idx">S-04</span>
+          <h3>Supply &amp; held stock</h3>
+          <p>Call-off stock of common spares — seal kits, fastener sets, filter elements, isolators — held against a framework agreement and shipped as matched sets.</p>
+        </div>
+        <div class="panel">
+          <span class="panel__idx">S-05</span>
+          <h3>Reverse engineering</h3>
+          <p>Obsolete or unsupported part? We measure or 3D-scan a sample, produce a controlled drawing and re-manufacture to the original fit, form and function.</p>
+        </div>
+        <div class="panel">
+          <span class="panel__idx">S-06</span>
+          <h3>Field &amp; site support</h3>
+          <p>Structured failure investigation (8D), root-cause analysis and fitment guidance for site teams. <a href="failure-report.html">Open a service / failure report →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUALITY / IMS ============ -->
+<section class="section section--tint" id="quality">
+  <div class="container split">
+    <div class="split__aside reveal">
+      <p class="eyebrow">Quality &amp; IMS / 02</p>
+      <h2>Every job is a controlled process.</h2>
+      <a class="link-arrow" href="resources.html#quality">See the certificates
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="reveal">
+      <div class="panel-grid">
+        <div class="panel"><span class="panel__idx">STD-01</span><h3>ISO 9001:2015</h3><p>Quality management — documented processes, controlled drawings, inspection and test records on every job.</p></div>
+        <div class="panel"><span class="panel__idx">STD-02</span><h3>ISO 14001</h3><p>Environmental management — waste, coolant and emissions handling across the workshop.</p></div>
+        <div class="panel"><span class="panel__idx">STD-03</span><h3>ISO 45001</h3><p>Occupational health &amp; safety — risk assessment, safe systems of work and incident reporting.</p></div>
+      </div>
+      <div class="prose" style="margin-top:28px">
+        <p>Refurbished units ship with an inspection record; manufactured parts carry material certificates and a dimensional report. <span>[PLACEHOLDER — add certificate numbers, issuing body, validity dates and any customer-specific approvals or NDT qualifications.]</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW AN ORDER RUNS ============ -->
+<section class="section" id="process">
+  <div class="container split">
+    <div class="split__aside reveal">
+      <p class="eyebrow">How it runs / 03</p>
+      <h2>Enquiry to shipped part.</h2>
+      <p>Send a code, a drawing or a nameplate photo. We confirm scope and lead time before any work starts.</p>
+    </div>
+    <div class="reveal">
+      <div class="panel-grid">
+        <div class="panel"><span class="panel__idx">01</span><h3>Enquiry</h3><p>Part code, OEM number, drawing or nameplate photo — plus the turbine platform and quantity.</p></div>
+        <div class="panel"><span class="panel__idx">02</span><h3>Assessment &amp; quote</h3><p>We match the part or assess the unit, confirm what's needed and quote price and lead time.</p></div>
+        <div class="panel"><span class="panel__idx">03</span><h3>Manufacture / refurbish</h3><p>Work proceeds against the controlling drawing with in-process inspection and hold points.</p></div>
+        <div class="panel"><span class="panel__idx">04</span><h3>Test, certify &amp; ship</h3><p>Final test and dimensional check, certificates and records issued, part packed and dispatched.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-band__inner">
+    <div>
+      <h2>Have a part to make or a unit to refurbish?</h2>
+      <p>Send a code, drawing or nameplate photo — we'll confirm scope, price and lead time. Reporting a field failure? Open the <a href="failure-report.html">8D service report</a>.</p>
+    </div>
+    <a class="btn btn--primary" href="contact.html">Request a quote
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/logo-white.svg" alt="EnergySYS" width="210" height="40">
+        <p>Manufacture, refurbishment, testing and supply of critical wind turbine components. A Twintronics enterprise.</p>
+        <address class="footer__addr">
+          New#50, Old#224, Nethaji Road<br>
+          PN Palayam, Coimbatore&nbsp;–&nbsp;641037<br>
+          Tamil Nadu, India<br>
+          <a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a> · <a href="mailto:rds@esys.co.in">rds@esys.co.in</a>
+        </address>
+        <div class="footer__social">
+          <a href="#" aria-label="EnergySYS on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22V21h-4z"/></svg></a>
+          <a href="#" aria-label="EnergySYS on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.2 5 12 5 12 5s-7.2 0-8.8.5A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8C4.8 19 12 19 12 19s7.2 0 8.8-.5a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM10 15.5v-7l6 3.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html?category=Control+Boards">Control boards</a></li>
+          <li><a href="products.html?category=Panels">Rack panels</a></li>
+          <li><a href="products.html?category=Cables">Cable assemblies</a></li>
+          <li><a href="products.html">Full catalogue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="services.html">Service</a></li>
+          <li><a href="failure-report.html">Service report</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get a quote</h3>
+        <ul>
+          <li><a href="contact.html">Request a quote</a></li>
+          <li><a href="resources.html#downloads">Download brochure</a></li>
+          <li><a href="resources.html#downloads">Product catalogue (PDF)</a></li>
+          <li><a href="tel:+919940247490">Call the workshop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> EnergySYS · Twintronics. All rights reserved.</span>
+      <span><a href="#">Terms of use</a> · <a href="#">Privacy</a> · <a href="#">Cancellation &amp; refund</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/particles.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
+<script>
+/* Service menu — inline fallback so Wind/Solar works even if main.js is blocked/cached */
+(function(){var li=document.querySelector(".nav__list .has-drop.drop-click");if(!li)return;var b=li.querySelector("a,.drop-toggle"),d=li.querySelector(".drop");if(!b||!d)return;li.setAttribute("data-svc-inline","1");var o=false;function s(){o=true;d.style.cssText="display:block;opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:none;";b.setAttribute("aria-expanded","true");li.classList.add("is-open");}function h(){o=false;d.style.cssText="display:none;";b.setAttribute("aria-expanded","false");li.classList.remove("is-open");}b.addEventListener("click",function(e){e.preventDefault();o?h():s();});b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();o?h():s();}});document.addEventListener("click",function(e){if(o&&!li.contains(e.target))h();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&o)h();});h();})();
+</script>
+</body>
+</html>

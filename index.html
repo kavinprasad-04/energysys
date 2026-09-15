@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EnergySYS — Wind turbine parts &amp; services</title>
+<meta name="description" content="EnergySYS manufactures, refurbishes, tests and supplies critical wind turbine components — rotating joints, bearing housings, power packs and custom parts — for OEMs, operators and parts suppliers.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/enhance.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<canvas id="tech-particles" aria-hidden="true"></canvas>
+<div class="tech-bg-fallback" aria-hidden="true"></div>
+
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+  <div class="container topbar__inner">
+    <ul>
+      <li><a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a></li>
+      <li class="is-optional"><a href="mailto:rds@esys.co.in">rds@esys.co.in</a></li>
+    </ul>
+    <ul>
+      <li class="topbar__meta">Mon–Sat · 09:30–18:00 IST</li>
+      <li class="is-optional"><a href="#" aria-label="EnergySYS on LinkedIn">LinkedIn</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.svg" alt="EnergySYS — home" width="210" height="44">
+      <span class="brand__sub">Wind&nbsp;turbine<br>parts&nbsp;&amp;&nbsp;service</span>
+    </a>
+    <form class="search" action="products.html" method="get" role="search">
+      <label class="visually-hidden" for="hdr-cat">Product category</label>
+      <select id="hdr-cat" name="category">
+        <option value="">All categories</option>
+        <option>Control Boards</option><option>Panels</option><option>Cables</option><option>Power Components</option>
+      </select>
+      <label class="visually-hidden" for="hdr-q">Search parts</label>
+      <input id="hdr-q" type="search" name="q" placeholder="Search a part or code…">
+      <button type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+    </form>
+    <a class="btn btn--primary header__cta" href="contact.html">Request a quote</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+  </div>
+</header>
+
+<!-- ================= PRIMARY NAV ================= -->
+<nav class="nav" id="site-nav">
+  <div class="container">
+    <ul class="nav__list">
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="about.html">About&nbsp;Us</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li class="has-drop drop-click">
+        <a class="drop-toggle" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">Service
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="services.html">Wind</a></li>
+          <li><a href="solar-service.html">Solar</a></li>
+        </ul>
+      </li>
+      <li class="has-drop">
+        <a href="resources.html">Resources
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="resources.html#clients">Clients</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="resources.html#careers">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="contact.html">Contact&nbsp;Us</a></li>
+    </ul>
+    <div class="nav__mobile-extra">
+      <a class="btn btn--primary" href="contact.html">Request a quote</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ================= HERO (video) ================= -->
+<section class="vhero" aria-label="EnergySYS — wind turbine parts and service">
+  <div class="vhero__fallback" aria-hidden="true"></div>
+  <div class="media-cover" data-parallax="0.12">
+    <video autoplay muted loop playsinline preload="metadata"
+           poster="assets/video/turbine-hero-poster.jpg" aria-hidden="true" tabindex="-1">
+      <source src="assets/video/turbine-hero.webm" type="video/webm">
+      <source src="assets/video/turbine-hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="vhero__scrim"></div>
+  <div class="container vhero__inner">
+    <p class="eyebrow" data-load style="--i:0">EnergySYS · wind turbine parts &amp; service</p>
+    <h1 data-load style="--i:1">Wind turbine parts,<br><em>kept turning.</em></h1>
+    <p class="vhero__lead" data-load style="--i:2">We manufacture, refurbish, test and supply the rotating-equipment components that keep turbines producing — for OEMs, operators and parts suppliers. Single-part orders welcome.</p>
+    <div class="vhero__actions" data-load style="--i:3">
+      <a class="btn btn--primary" href="service-request.html">Request Service
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn--primary" href="contact.html">Request a quote
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn--ghost" href="products.html">Browse the catalogue</a>
+    </div>
+    <dl class="vhero__stats" data-load style="--i:4">
+      <div class="vhero__stat"><b class="count" data-count="10">10</b><span>Part categories</span></div>
+      <div class="vhero__stat"><b class="count" data-count="7">7</b><span>Service lines</span></div>
+      <div class="vhero__stat"><b class="count" data-count="3">3</b><span>ISO certifications</span></div>
+    </dl>
+  </div>
+  <span class="vhero__scroll" aria-hidden="true"></span>
+</section>
+
+<!-- ================= CLIENTS ================= -->
+<!--
+  LOGO FILES: save each client's logo into assets/img/clients/ using the filename in its
+  <img src> (PNG with a transparent background looks best). Until a file exists the browser
+  removes the broken <img> (onerror) and the text name shows instead, so this grid looks
+  fine now and fills in as you add files. Keep this list identical to resources.html.
+-->
+<section class="clients-band" aria-label="Clients">
+  <div class="container">
+    <p class="clients-band__label">Clients</p>
+    <ul class="client-wall reveal" role="list">
+      <li><img src="assets/img/clients/tata-power-solar.png" alt="Tata Power Solar" loading="lazy" onerror="this.remove()"><span class="client-wall__name">Tata Power Solar</span></li>
+      <li><img src="assets/img/clients/sembcorp.png" alt="Sembcorp" loading="lazy" onerror="this.remove()"><span class="client-wall__name">Sembcorp</span></li>
+      <li><img src="assets/img/clients/nepc-india.png" alt="NEPC India" loading="lazy" onerror="this.remove()"><span class="client-wall__name">NEPC India</span></li>
+      <li><img src="assets/img/clients/green-infra.png" alt="Green Infra" loading="lazy" onerror="this.remove()"><span class="client-wall__name">Green Infra</span></li>
+      <li><img src="assets/img/clients/siemens-gamesa.png" alt="Siemens Gamesa" loading="lazy" onerror="this.remove()"><span class="client-wall__name">Siemens Gamesa</span></li>
+      <li><img src="assets/img/clients/senvion.png" alt="Senvion" loading="lazy" onerror="this.remove()"><span class="client-wall__name">Senvion</span></li>
+      <li><img src="assets/img/clients/nsl-power.png" alt="NSL Power" loading="lazy" onerror="this.remove()"><span class="client-wall__name">NSL Power</span></li>
+      <li><img src="assets/img/clients/jsw-energy.png" alt="JSW Energy" loading="lazy" onerror="this.remove()"><span class="client-wall__name">JSW Energy</span></li>
+      <li><img src="assets/img/clients/hetero.png" alt="Hetero" loading="lazy" onerror="this.remove()"><span class="client-wall__name">Hetero</span></li>
+      <li><img src="assets/img/clients/windforce.png" alt="WindForce" loading="lazy" onerror="this.remove()"><span class="client-wall__name">WindForce</span></li>
+      <li><img src="assets/img/clients/dlre.png" alt="DLRE" loading="lazy" onerror="this.remove()"><span class="client-wall__name">DLRE</span></li>
+      <li><img src="assets/img/clients/wind-world.png" alt="Wind World" loading="lazy" onerror="this.remove()"><span class="client-wall__name">Wind World</span></li>
+      <li><img src="assets/img/clients/vestas.png" alt="Vestas" loading="lazy" onerror="this.remove()"><span class="client-wall__name">Vestas</span></li>
+      <li><img src="assets/img/clients/ge.png" alt="GE" loading="lazy" onerror="this.remove()"><span class="client-wall__name">GE</span></li>
+      <li><img src="assets/img/clients/renom.png" alt="Renom" loading="lazy" onerror="this.remove()"><span class="client-wall__name">Renom</span></li>
+    </ul>
+    <p style="text-align:center;margin-top:20px">
+      <a class="link-arrow" href="resources.html#clients">See all clients
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ================= CAPABILITIES ================= -->
+<section class="section" id="capabilities">
+  <div class="container split">
+    <div class="split__aside reveal">
+      <p class="eyebrow">Capabilities / 01</p>
+      <h2>Seven service lines, one drivetrain.</h2>
+      <p>From a single seal to a full annual parts contract — configured around your turbine models and your maintenance calendar.</p>
+      <a class="link-arrow" href="services.html">Full service detail
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <ol class="spec-list reveal">
+      <li><div class="spec-row"><span class="spec-row__idx">01</span><div><h3>Refurbishing services</h3><p>Servicing and refurbishing critical wind turbine components to extend their service life and reduce replacement costs.</p></div></div></li>
+      <li><div class="spec-row"><span class="spec-row__idx">02</span><div><h3>Rotating joints services</h3><p>Manufacturing, servicing, testing and repairing rotating joints used in wind turbines.</p></div></div></li>
+      <li><div class="spec-row"><span class="spec-row__idx">03</span><div><h3>Main shaft &amp; bearing housing services</h3><p>Manufacturing and servicing main bearing housing assemblies — replacing bearings, seals, O-rings and related components.</p></div></div></li>
+      <li><div class="spec-row"><span class="spec-row__idx">04</span><div><h3>Power pack services</h3><p>Repairing, servicing, testing and supplying hydraulic power packs and their components.</p></div></div></li>
+      <li><div class="spec-row"><span class="spec-row__idx">05</span><div><h3>Custom designed parts</h3><p>Designing, redesigning, developing, testing and supplying customised wind turbine parts to specific requirements.</p></div></div></li>
+      <li><div class="spec-row"><span class="spec-row__idx">06</span><div><h3>Spare parts &amp; consumables</h3><p>Supplying a wide range of maintenance parts and consumables for different wind turbine models and manufacturers.</p></div></div></li>
+      <li><div class="spec-row"><span class="spec-row__idx">07</span><div><h3>Annual parts contract</h3><p>Annual spare-parts supply contracts that help you hold the right inventory and minimise turbine downtime.</p></div></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= WIND FARM SERVICE ================= -->
+<section class="cta-band" id="wind-farm-service">
+  <div class="container cta-band__inner">
+    <div>
+      <h2>Operate a wind farm?</h2>
+      <p>inspection · preventive &amp; corrective maintenance · blade, gearbox &amp; generator repair · breakdown support — request on-site service for your turbines and wind-farm assets.</p>
+    </div>
+    <a class="btn btn--primary" href="service-request.html">Request Service
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================= CATEGORIES ================= -->
+<section class="section section--tint" id="categories">
+  <div class="container">
+    <div class="s-head reveal">
+      <p class="eyebrow">Catalogue / 02</p>
+      <h2>Part categories</h2>
+      <p>Ten families of components, cross-referenced to major turbine platforms. Pick a category to see representative parts, then send the code for a price.</p>
+    </div>
+    <div class="cat-grid reveal">
+      <a class="cat-card" href="products.html?category=Couplings"><span class="cat-card__code">CPL</span><span class="cat-card__name">Couplings</span><span class="cat-card__go">View parts →</span></a>
+      <a class="cat-card" href="products.html?category=Mechanical"><span class="cat-card__code">MEC</span><span class="cat-card__name">Mechanical</span><span class="cat-card__go">View parts →</span></a>
+      <a class="cat-card" href="products.html?category=Vibration+Isolators"><span class="cat-card__code">VIB</span><span class="cat-card__name">Vibration Isolators</span><span class="cat-card__go">View parts →</span></a>
+      <a class="cat-card" href="products.html?category=Engineered+Textile+Products"><span class="cat-card__code">ETP</span><span class="cat-card__name">Engineered Textile Products</span><span class="cat-card__go">View parts →</span></a>
+      <a class="cat-card" href="products.html?category=Electrical+and+Electronics"><span class="cat-card__code">ELE</span><span class="cat-card__name">Electrical &amp; Electronics</span><span class="cat-card__go">View parts →</span></a>
+      <a class="cat-card" href="products.html?category=Rotating+Joints+and+Slip+Rings"><span class="cat-card__code">RJS</span><span class="cat-card__name">Rotating Joints &amp; Slip Rings</span><span class="cat-card__go">View parts →</span></a>
+      <a class="cat-card" href="products.html?category=FRP+Products+and+Accessories"><span class="cat-card__code">FRP</span><span class="cat-card__name">FRP Products &amp; Accessories</span><span class="cat-card__go">View parts →</span></a>
+      <a class="cat-card" href="products.html?category=Hydraulics+and+Cooling"><span class="cat-card__code">HYC</span><span class="cat-card__name">Hydraulics &amp; Cooling</span><span class="cat-card__go">View parts →</span></a>
+      <a class="cat-card" href="products.html?category=Monitoring+and+Controlling"><span class="cat-card__code">MON</span><span class="cat-card__name">Monitoring &amp; Controlling</span><span class="cat-card__go">View parts →</span></a>
+      <a class="cat-card" href="products.html?category=Other+Products"><span class="cat-card__code">OTH</span><span class="cat-card__name">Other Products</span><span class="cat-card__go">View parts →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHOTO BAND ================= -->
+<section class="photoband" aria-label="EnergySYS in the field">
+  <div class="media-cover" data-parallax="0.16">
+    <picture>
+      <source type="image/webp" srcset="assets/img/photos/wind-hills-800.webp 800w, assets/img/photos/wind-hills-1200.webp 1200w, assets/img/photos/wind-hills-1920.webp 1920w" sizes="100vw">
+      <img src="assets/img/photos/wind-hills-1200.jpg" srcset="assets/img/photos/wind-hills-800.jpg 800w, assets/img/photos/wind-hills-1200.jpg 1200w, assets/img/photos/wind-hills-1920.jpg 1920w" sizes="100vw" alt="A hillside wind farm of white turbines at golden hour" loading="lazy" decoding="async" width="1920" height="1275">
+    </picture>
+  </div>
+  <div class="photoband__scrim"></div>
+  <div class="container photoband__inner">
+    <p class="eyebrow reveal">In the field</p>
+    <h2 class="reveal" style="--i:1">From a single seal to a full annual contract — we keep the fleet turning.</h2>
+    <p class="reveal" style="--i:2">Refurbishment, exchange units and manufactured spares for wind turbine drivetrains, backed by inspection records and test data on every job.</p>
+    <div class="photoband__actions reveal" style="--i:3">
+      <a class="btn btn--primary" href="services.html">See our services
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn--ghost" href="about.html">About EnergySYS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEGMENTS ================= -->
+<section class="section section--dark" id="segments">
+  <div class="container">
+    <div class="s-head reveal">
+      <p class="eyebrow">Servicing segments / 03</p>
+      <h2>Who we work with</h2>
+      <p>The same workshop, quoted three ways — to fit how your organisation buys parts.</p>
+    </div>
+    <div class="panel-grid reveal">
+      <div class="panel panel--dark">
+        <span class="panel__idx">SEG-01</span>
+        <svg class="panel__ico" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="12" width="22" height="14" rx="2"/><path d="M9 12V7h14v5M16 19v4"/></svg>
+        <h3>Wind turbine generator OEMs</h3>
+        <p>Series and one-off manufacture to your drawings, with first-article inspection and documented traceability.</p>
+      </div>
+      <div class="panel panel--dark">
+        <span class="panel__idx">SEG-02</span>
+        <svg class="panel__ico" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 26 16 6l10 20zM12 26l4-8 4 8"/></svg>
+        <h3>IPPs &amp; ISPs</h3>
+        <p>Refurbishment, exchange units and annual parts contracts for independent power producers and service providers running mixed fleets.</p>
+      </div>
+      <div class="panel panel--dark">
+        <span class="panel__idx">SEG-03</span>
+        <svg class="panel__ico" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="9" width="22" height="16" rx="2"/><path d="M5 15h22M12 9v16"/></svg>
+        <h3>Wind turbine parts suppliers</h3>
+        <p>Trade pricing, private-label packing and drop-ship on catalogue components and consumables.</p>
+      </div>
+    </div>
+    <div class="statband reveal mt-l">
+      <div><b>ISO 9001</b><span>Quality management</span></div>
+      <div><b>ISO 14001</b><span>Environmental</span></div>
+      <div><b>ISO 45001</b><span>Health &amp; safety</span></div>
+      <div><b>Coimbatore <em>· IN</em></b><span>Workshop &amp; despatch</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta-band cta-band--photo">
+  <div class="media-cover" data-parallax="0.10">
+    <picture>
+      <source type="image/webp" srcset="assets/img/photos/wind-sunset-1200.webp 1200w, assets/img/photos/wind-sunset-1920.webp 1920w" sizes="100vw">
+      <img src="assets/img/photos/wind-sunset-1200.jpg" srcset="assets/img/photos/wind-sunset-1200.jpg 1200w, assets/img/photos/wind-sunset-1920.jpg 1920w" sizes="100vw" alt="" loading="lazy" decoding="async" width="1920" height="1280">
+    </picture>
+  </div>
+  <div class="container cta-band__inner">
+    <div>
+      <h2>Tell us the part number.</h2>
+      <p>drawing · nameplate photo · old OEM code — we'll identify it and quote.</p>
+    </div>
+    <a class="btn btn--primary" href="contact.html">Start an enquiry
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/logo-white.svg" alt="EnergySYS" width="210" height="40">
+        <p>Manufacture, refurbishment, testing and supply of critical wind turbine components. A Twintronics enterprise.</p>
+        <address class="footer__addr">
+          New#50, Old#224, Nethaji Road<br>
+          PN Palayam, Coimbatore&nbsp;–&nbsp;641037<br>
+          Tamil Nadu, India<br>
+          <a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a> · <a href="mailto:rds@esys.co.in">rds@esys.co.in</a>
+        </address>
+        <div class="footer__social">
+          <a href="#" aria-label="EnergySYS on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22V21h-4z"/></svg></a>
+          <a href="#" aria-label="EnergySYS on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.2 5 12 5 12 5s-7.2 0-8.8.5A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8C4.8 19 12 19 12 19s7.2 0 8.8-.5a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM10 15.5v-7l6 3.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html?category=Control+Boards">Control boards</a></li>
+          <li><a href="products.html?category=Panels">Rack panels</a></li>
+          <li><a href="products.html?category=Cables">Cable assemblies</a></li>
+          <li><a href="products.html">Full catalogue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="services.html">Service</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="resources.html#careers">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get a quote</h3>
+        <ul>
+          <li><a href="contact.html">Request a quote</a></li>
+          <li><a href="resources.html#downloads">Download brochure</a></li>
+          <li><a href="resources.html#downloads">Product catalogue (PDF)</a></li>
+          <li><a href="tel:+919940247490">Call the workshop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> EnergySYS · Twintronics. All rights reserved.</span>
+      <span><a href="#">Terms of use</a> · <a href="#">Privacy</a> · <a href="#">Cancellation &amp; refund</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/particles.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
+<script>
+/* Service menu — inline fallback so Wind/Solar works even if main.js is blocked/cached */
+(function(){var li=document.querySelector(".nav__list .has-drop.drop-click");if(!li)return;var b=li.querySelector("a,.drop-toggle"),d=li.querySelector(".drop");if(!b||!d)return;li.setAttribute("data-svc-inline","1");var o=false;function s(){o=true;d.style.cssText="display:block;opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:none;";b.setAttribute("aria-expanded","true");li.classList.add("is-open");}function h(){o=false;d.style.cssText="display:none;";b.setAttribute("aria-expanded","false");li.classList.remove("is-open");}b.addEventListener("click",function(e){e.preventDefault();o?h():s();});b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();o?h():s();}});document.addEventListener("click",function(e){if(o&&!li.contains(e.target))h();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&o)h();});h();})();
+</script>
+</body>
+</html>

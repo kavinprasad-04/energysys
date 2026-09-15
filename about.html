@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About EnergySYS — wind turbine parts &amp; service</title>
+<meta name="description" content="EnergySYS is the wind-energy division of Twintronics, Coimbatore — manufacturing, refurbishing and testing critical wind turbine drivetrain components.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/enhance.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<canvas id="tech-particles" aria-hidden="true"></canvas>
+<div class="tech-bg-fallback" aria-hidden="true"></div>
+
+<div class="topbar">
+  <div class="container topbar__inner">
+    <ul>
+      <li><a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a></li>
+      <li class="is-optional"><a href="mailto:rds@esys.co.in">rds@esys.co.in</a></li>
+    </ul>
+    <ul>
+      <li class="topbar__meta">Mon–Sat · 09:30–18:00 IST</li>
+      <li class="is-optional"><a href="#" aria-label="EnergySYS on LinkedIn">LinkedIn</a></li>
+    </ul>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.svg" alt="EnergySYS — home" width="210" height="44">
+      <span class="brand__sub">Wind&nbsp;turbine<br>parts&nbsp;&amp;&nbsp;service</span>
+    </a>
+    <form class="search" action="products.html" method="get" role="search">
+      <label class="visually-hidden" for="hdr-cat">Product category</label>
+      <select id="hdr-cat" name="category">
+        <option value="">All categories</option>
+        <option>Control Boards</option><option>Panels</option><option>Cables</option><option>Power Components</option>
+      </select>
+      <label class="visually-hidden" for="hdr-q">Search parts</label>
+      <input id="hdr-q" type="search" name="q" placeholder="Search a part or code…">
+      <button type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+    </form>
+    <a class="btn btn--primary header__cta" href="contact.html">Request a quote</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+  </div>
+</header>
+
+<nav class="nav" id="site-nav">
+  <div class="container">
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" aria-current="page">About&nbsp;Us</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li class="has-drop drop-click">
+        <a class="drop-toggle" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">Service
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="services.html">Wind</a></li>
+          <li><a href="solar-service.html">Solar</a></li>
+        </ul>
+      </li>
+      <li class="has-drop">
+        <a href="resources.html">Resources
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="resources.html#clients">Clients</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="resources.html#careers">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="contact.html">Contact&nbsp;Us</a></li>
+    </ul>
+    <div class="nav__mobile-extra"><a class="btn btn--primary" href="contact.html">Request a quote</a></div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!--
+  CONTENT NOTE — the "use cases" text supplied for About (production allocation,
+  hydrocarbon accounting, emissions management, measurement & reporting, data
+  migration, post-M&A integration) describes energysys.com, an unrelated UK
+  oil-&-gas software company. The copy below is placeholder text consistent with
+  the wind-turbine-parts business described everywhere else in the brief.
+  Replace all [PLACEHOLDER] markers with approved wording.
+-->
+
+<section class="page-head page-head--photo">
+  <div class="media-cover" data-parallax="0.14">
+    <picture>
+      <source type="image/webp" srcset="assets/img/photos/wind-hills-800.webp 800w, assets/img/photos/wind-hills-1200.webp 1200w, assets/img/photos/wind-hills-1920.webp 1920w" sizes="100vw">
+      <img src="assets/img/photos/wind-hills-1200.jpg" srcset="assets/img/photos/wind-hills-800.jpg 800w, assets/img/photos/wind-hills-1200.jpg 1200w, assets/img/photos/wind-hills-1920.jpg 1920w" sizes="100vw" alt="" loading="eager" decoding="async" width="1920" height="1280">
+    </picture>
+  </div>
+  <div class="container">
+    <p class="eyebrow">About / company</p>
+    <h1>The workshop behind the parts.</h1>
+    <p>EnergySYS is the wind-energy division of Twintronics — manufacturing, refurbishing and testing the components that keep turbine drivetrains turning.</p>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span>About</nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="split__aside reveal">
+      <p class="eyebrow">Who we are / 01</p>
+      <h2>Rotating equipment is all we do.</h2>
+      <a class="link-arrow" href="contact.html">Talk to us
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="prose reveal">
+      <p>EnergySYS works from a machining and assembly workshop in Coimbatore, India, supplying wind turbine generator OEMs, independent power producers and service providers, and parts distributors. <span>[PLACEHOLDER — confirm founding year, plant area, headcount and machine list.]</span></p>
+      <p>Our scope is deliberately narrow: rotating joints, main bearing housing assemblies, hydraulic power packs, couplings, isolators and the custom parts that sit around them. We manufacture to drawing, remanufacture worn units back to spec, and run the tests that prove they are fit to go back up the tower.</p>
+      <p>We take single-part orders. A distributor needing one seal kit and an OEM placing a annual framework contract are quoted with the same care.</p>
+      <h3>What that means in practice</h3>
+      <ul>
+        <li>First-article inspection and documented traceability on manufactured parts</li>
+        <li>Strip, measure and report before any refurbishment quote is firmed up</li>
+        <li>Function and pressure testing on power packs and rotating joints</li>
+        <li>Packing and despatch options for trade and drop-ship customers</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container split">
+    <div class="split__aside reveal">
+      <p class="eyebrow">Track record / 02</p>
+      <h2>How we got here.</h2>
+      <p>[PLACEHOLDER — supply real dates and milestones. Years shown as 20XX are placeholders.]</p>
+    </div>
+    <ol class="timeline reveal">
+      <li><b>20XX</b><p>Twintronics established in Chennai.</p></li>
+      <li><b>20XX</b><p>Wind turbine parts line set up under the EnergySYS name.</p></li>
+      <li><b>20XX</b><p>First OEM manufacturing approval; rotating-joint test rig commissioned.</p></li>
+      <li><b>20XX</b><p>ISO 9001 quality management certification.</p></li>
+      <li><b>20XX</b><p>ISO 14001 and ISO 45001 added — integrated management system.</p></li>
+      <li><b>20XX</b><p>[PLACEHOLDER — recent milestone: capacity, export market, key contract.]</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="split__aside reveal">
+      <p class="eyebrow">Quality / 03</p>
+      <h2>Prove it, then ship it.</h2>
+      <a class="link-arrow" href="resources.html#quality">Quality &amp; IMS
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="prose reveal">
+      <p>EnergySYS runs an integrated management system covering quality (ISO&nbsp;9001:2015), environment (ISO&nbsp;14001) and occupational health &amp; safety (ISO&nbsp;45001). Certificates are available on request and on the <a href="resources.html#downloads">downloads</a> page.</p>
+      <p>Every refurbished unit leaves with an inspection record: what was measured, what was replaced, and the test results it passed. Manufactured parts ship with material certificates and dimensional reports against the controlling drawing.</p>
+      <p><span>[PLACEHOLDER — add specifics: calibration regime, NDT methods used, welding qualifications, any customer-specific approvals.]</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="photoband photoband--center" aria-label="EnergySYS field work">
+  <div class="media-cover" data-parallax="0.16">
+    <picture>
+      <source type="image/webp" srcset="assets/img/photos/wind-fog-800.webp 800w, assets/img/photos/wind-fog-1200.webp 1200w, assets/img/photos/wind-fog-1920.webp 1920w" sizes="100vw">
+      <img src="assets/img/photos/wind-fog-1200.jpg" srcset="assets/img/photos/wind-fog-800.jpg 800w, assets/img/photos/wind-fog-1200.jpg 1200w, assets/img/photos/wind-fog-1920.jpg 1920w" sizes="100vw" alt="A wind turbine emerging from low cloud" loading="lazy" decoding="async" width="1920" height="1440">
+    </picture>
+  </div>
+  <div class="photoband__scrim"></div>
+  <div class="container photoband__inner">
+    <p class="eyebrow reveal">Our scope</p>
+    <h2 class="reveal" style="--i:1">Rotating equipment is all we do.</h2>
+    <p class="reveal" style="--i:2">Rotating joints, main bearing housings, hydraulic power packs, couplings, isolators — and the custom parts that sit around them. Manufactured, remanufactured, tested.</p>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="s-head reveal">
+      <p class="eyebrow">Servicing segments / 04</p>
+      <h2>Built around how you buy</h2>
+    </div>
+    <div class="panel-grid reveal">
+      <div class="panel panel--dark"><span class="panel__idx">SEG-01</span><h3>Wind turbine generator OEMs</h3><p>Series and one-off manufacture to your drawings, with first-article inspection and traceability.</p></div>
+      <div class="panel panel--dark"><span class="panel__idx">SEG-02</span><h3>IPPs &amp; ISPs</h3><p>Refurbishment, exchange units and annual parts contracts for mixed fleets.</p></div>
+      <div class="panel panel--dark"><span class="panel__idx">SEG-03</span><h3>Wind turbine parts suppliers</h3><p>Trade pricing, private-label packing and drop-ship on catalogue components.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-band__inner">
+    <div>
+      <h2>Tell us the part number.</h2>
+      <p>drawing · nameplate photo · old OEM code — we'll identify it and quote.</p>
+    </div>
+    <a class="btn btn--primary" href="contact.html">Start an enquiry
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/logo-white.svg" alt="EnergySYS" width="210" height="40">
+        <p>Manufacture, refurbishment, testing and supply of critical wind turbine components. A Twintronics enterprise.</p>
+        <address class="footer__addr">
+          New#50, Old#224, Nethaji Road<br>
+          PN Palayam, Coimbatore&nbsp;–&nbsp;641037<br>
+          Tamil Nadu, India<br>
+          <a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a> · <a href="mailto:rds@esys.co.in">rds@esys.co.in</a>
+        </address>
+        <div class="footer__social">
+          <a href="#" aria-label="EnergySYS on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22V21h-4z"/></svg></a>
+          <a href="#" aria-label="EnergySYS on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.2 5 12 5 12 5s-7.2 0-8.8.5A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8C4.8 19 12 19 12 19s7.2 0 8.8-.5a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM10 15.5v-7l6 3.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html?category=Control+Boards">Control boards</a></li>
+          <li><a href="products.html?category=Panels">Rack panels</a></li>
+          <li><a href="products.html?category=Cables">Cable assemblies</a></li>
+          <li><a href="products.html">Full catalogue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="services.html">Service</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="resources.html#careers">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get a quote</h3>
+        <ul>
+          <li><a href="contact.html">Request a quote</a></li>
+          <li><a href="resources.html#downloads">Download brochure</a></li>
+          <li><a href="resources.html#downloads">Product catalogue (PDF)</a></li>
+          <li><a href="tel:+919940247490">Call the workshop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> EnergySYS · Twintronics. All rights reserved.</span>
+      <span><a href="#">Terms of use</a> · <a href="#">Privacy</a> · <a href="#">Cancellation &amp; refund</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/particles.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
+<script>
+/* Service menu — inline fallback so Wind/Solar works even if main.js is blocked/cached */
+(function(){var li=document.querySelector(".nav__list .has-drop.drop-click");if(!li)return;var b=li.querySelector("a,.drop-toggle"),d=li.querySelector(".drop");if(!b||!d)return;li.setAttribute("data-svc-inline","1");var o=false;function s(){o=true;d.style.cssText="display:block;opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:none;";b.setAttribute("aria-expanded","true");li.classList.add("is-open");}function h(){o=false;d.style.cssText="display:none;";b.setAttribute("aria-expanded","false");li.classList.remove("is-open");}b.addEventListener("click",function(e){e.preventDefault();o?h():s();});b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();o?h():s();}});document.addEventListener("click",function(e){if(o&&!li.contains(e.target))h();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&o)h();});h();})();
+</script>
+</body>
+</html>

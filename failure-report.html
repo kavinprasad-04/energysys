@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service / Failure Report — EnergySYS</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/enhance.css">
+<link rel="stylesheet" href="assets/css/service.css?v=3">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<canvas id="tech-particles" aria-hidden="true"></canvas>
+<div class="tech-bg-fallback" aria-hidden="true"></div>
+
+<div class="topbar">
+  <div class="container topbar__inner">
+    <ul>
+      <li><a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a></li>
+      <li class="is-optional"><a href="mailto:rds@esys.co.in">rds@esys.co.in</a></li>
+    </ul>
+    <ul>
+      <li class="topbar__meta">Mon–Sat · 09:30–18:00 IST</li>
+      <li class="is-optional"><a href="#" aria-label="EnergySYS on LinkedIn">LinkedIn</a></li>
+    </ul>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.svg" alt="EnergySYS — home" width="210" height="44">
+      <span class="brand__sub">Wind&nbsp;turbine<br>parts&nbsp;&amp;&nbsp;service</span>
+    </a>
+    <form class="search" action="products.html" method="get" role="search">
+      <label class="visually-hidden" for="hdr-cat">Product category</label>
+      <select id="hdr-cat" name="category">
+        <option value="">All categories</option>
+        <option>Control Boards</option><option>Panels</option><option>Cables</option><option>Power Components</option>
+      </select>
+      <label class="visually-hidden" for="hdr-q">Search parts</label>
+      <input id="hdr-q" type="search" name="q" placeholder="Search a part or code…">
+      <button type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+    </form>
+    <a class="btn btn--primary header__cta" href="contact.html">Request a quote</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+  </div>
+</header>
+
+<nav class="nav" id="site-nav">
+  <div class="container">
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About&nbsp;Us</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li class="has-drop drop-click">
+        <a class="drop-toggle" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">Service
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="services.html">Wind</a></li>
+          <li><a href="solar-service.html">Solar</a></li>
+        </ul>
+      </li>
+      <li class="has-drop">
+        <a href="resources.html">Resources
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="resources.html#clients">Clients</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="resources.html#careers">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="contact.html">Contact&nbsp;Us</a></li>
+    </ul>
+    <div class="nav__mobile-extra"><a class="btn btn--primary" href="contact.html">Request a quote</a></div>
+  </div>
+</nav>
+
+<div class="svc-head">
+  <div class="container">
+    <div>
+      <h1>Service / Failure Report</h1>
+      <p>8D-style failure analysis · symptom → containment → evidence → email</p>
+    </div>
+    <div class="svc-userbar" id="userbar"></div>
+  </div>
+</div>
+
+<main id="main" class="svc-main">
+  <form id="report-form" class="svc-form" novalidate>
+    <div class="container svc-wrap">
+
+      <!-- 1. SYMPTOM DETAILS -->
+      <section class="svc-card">
+        <h2><span class="n">1</span> Symptom Details</h2>
+        <div class="svc-card__body">
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-title">Symptom Title <span class="req">*</span></label>
+              <input id="f-title" name="symptom_title" value="Unit Dead" required>
+              <span class="field__err" data-for="symptom_title"></span>
+            </div>
+            <div class="field">
+              <label for="f-product">Product / System</label>
+              <input id="f-product" name="product" value="FM Radio">
+              <span class="field__err"></span>
+            </div>
+            <div class="field is-full">
+              <label for="f-desc">Symptom Description <span class="req">*</span></label>
+              <textarea id="f-desc" name="symptom_description" required>The FM radio is not playing when connected to Batt and Ign ON</textarea>
+              <span class="field__err" data-for="symptom_description"></span>
+            </div>
+            <div class="field">
+              <label for="f-cat">Symptom Category <span class="req">*</span></label>
+              <select id="f-cat" name="symptom_category" required>
+                <option value="">Select…</option>
+                <option selected>Completely Dead</option>
+                <option>No Audio Output</option>
+                <option>Intermittent Fault</option>
+                <option>Distorted / Low Audio</option>
+                <option>Display / Indicator Fault</option>
+                <option>Controls Not Responding</option>
+                <option>Overheating</option>
+                <option>Physical / Mechanical Damage</option>
+                <option>Component Burn / Smell</option>
+                <option>Software / Firmware Issue</option>
+                <option>Connectivity / Reception Issue</option>
+                <option>Other</option>
+              </select>
+              <span class="field__err" data-for="symptom_category"></span>
+            </div>
+            <div class="field">
+              <label for="f-irdate">Initial Response Date</label>
+              <input id="f-irdate" name="initial_response_date" type="date">
+              <span class="field__err"></span>
+            </div>
+            <div class="field is-full">
+              <label>Affected Units / Failure</label>
+              <div class="repeater" id="units-repeater"></div>
+              <button type="button" class="btn-add" id="units-add">＋ Add unit / failure line</button>
+              <span class="field__err"></span>
+            </div>
+            <div class="field is-full">
+              <label for="f-era">Emergency Response Action (ERA)</label>
+              <textarea id="f-era" name="era" placeholder="Describe the immediate containment / emergency response taken…"></textarea>
+              <span class="field__err"></span>
+            </div>
+            <div class="field">
+              <label for="f-eradate">ERA Date</label>
+              <input id="f-eradate" name="era_date" type="date">
+              <span class="field__err"></span>
+            </div>
+            <div class="field">
+              <label for="f-c24">Contained in 24 Hrs</label>
+              <select id="f-c24" name="contained_24h">
+                <option value="">Select…</option>
+                <option>Yes</option>
+                <option>No</option>
+                <option>Pending</option>
+              </select>
+              <span class="field__err"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. TEAM (D1) -->
+      <section class="svc-card">
+        <h2><span class="n">2</span> Team (D1) Details</h2>
+        <p class="hint">The people responding to this failure. Add, edit or remove rows as needed.</p>
+        <div class="svc-card__body">
+          <div class="svc-table-wrap">
+            <table class="svc-table" id="team-table">
+              <thead>
+                <tr>
+                  <th style="min-width:150px">Member Name</th>
+                  <th style="min-width:130px">Role</th>
+                  <th style="min-width:130px">Mobile</th>
+                  <th style="min-width:190px">Email</th>
+                  <th style="min-width:150px">Remarks</th>
+                  <th class="col-x" aria-label="Remove"></th>
+                </tr>
+              </thead>
+              <tbody id="team-body"></tbody>
+            </table>
+          </div>
+          <button type="button" class="btn-add" id="team-add">＋ Add team member</button>
+        </div>
+      </section>
+
+      <!-- 3. PROBLEM DESCRIPTION (D2) -->
+      <section class="svc-card">
+        <h2><span class="n">3</span> Problem Description (D2)</h2>
+        <div class="svc-card__body">
+          <div class="form-grid">
+            <div class="field is-full">
+              <label for="f-pd">Problem Description <span class="req">*</span></label>
+              <textarea id="f-pd" name="problem_description" required style="min-height:120px">Dead Radio – 3 Units, No Audio output – 1 Unit</textarea>
+              <span class="field__err" data-for="problem_description"></span>
+            </div>
+            <div class="field is-full">
+              <label for="f-fm">Failure Mode <span class="req">*</span></label>
+              <textarea id="f-fm" name="failure_mode" required style="min-height:120px">In all modes of operation. On powering ON the units, a resistor burning was observed in 3 of the units.</textarea>
+              <span class="field__err" data-for="failure_mode"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. PROBLEM IMAGES -->
+      <section class="svc-card">
+        <h2><span class="n">4</span> Problem Images / Failure Evidence</h2>
+        <p class="hint">JPG, JPEG, PNG or WEBP. Multiple images allowed. Large images are resized before sending. Add a short caption to each (e.g. “Burnt resistor”, “Dead radio unit”, “PCB damage”, “No audio output”).</p>
+        <div class="svc-card__body">
+          <label class="img-drop" id="img-drop" tabindex="0">
+            <input type="file" id="img-input" accept="image/jpeg,image/png,image/webp" multiple>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4M8 8l4-4 4 4"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+            <b>Click to choose images, or drop them here</b>
+            <span>Up to 8 images · 10 MB each</span>
+          </label>
+          <div class="img-grid" id="img-grid" hidden></div>
+          <span class="field__err" id="img-err"></span>
+        </div>
+      </section>
+
+      <!-- 5. ENTERED BY / UPDATED BY -->
+      <section class="svc-card">
+        <h2><span class="n">5</span> Entered By / Updated By</h2>
+        <div class="svc-card__body">
+          <div class="form-grid">
+            <div class="field">
+              <label for="f-eb">Entered By <span class="req">*</span></label>
+              <input id="f-eb" name="entered_by" required>
+              <span class="field__err" data-for="entered_by"></span>
+            </div>
+            <div class="field">
+              <label for="f-ub">Updated By</label>
+              <input id="f-ub" name="updated_by" readonly>
+              <span class="field__err"></span>
+            </div>
+          </div>
+          <div class="svc-record" style="margin-top:16px">
+            <div><span>Report Created</span><b id="rec-created">— (set on submit)</b></div>
+            <div><span>Last Updated</span><b id="rec-updated">— (set on submit)</b></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. EMAIL REPORT -->
+      <section class="svc-card">
+        <h2><span class="n">6</span> Email Report</h2>
+        <div class="svc-card__body">
+          <div class="svc-record" style="margin-bottom:16px">
+            <div><span>Report is emailed to</span><b id="report-to">kavinprasad887@gmail.com</b></div>
+          </div>
+          <div class="form-grid">
+            <div class="field is-full">
+              <label for="f-cc">CC Email</label>
+              <input id="f-cc" name="cc_emails" placeholder="optional — comma or semicolon separated">
+              <span class="field__err" data-for="cc_emails"></span>
+            </div>
+            <div class="field is-full">
+              <label for="f-subj">Email Subject</label>
+              <input id="f-subj" name="email_subject">
+              <span class="field__err"></span>
+              <p class="form-note">Auto-generated from the symptom title and product. Edit if needed.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p class="form-note" style="text-align:right">
+        <a href="service-reports.html">View past reports →</a>
+      </p>
+    </div>
+
+    <div class="svc-actions">
+      <div class="container svc-wrap">
+        <span class="form-note" id="send-hint"></span>
+        <button class="btn btn--primary" type="submit" id="send-btn">Send Service Report</button>
+      </div>
+    </div>
+  </form>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/logo-white.svg" alt="EnergySYS" width="210" height="40">
+        <p>Manufacture, refurbishment, testing and supply of critical wind turbine components. A Twintronics enterprise.</p>
+        <address class="footer__addr">
+          New#50, Old#224, Nethaji Road<br>
+          PN Palayam, Coimbatore&nbsp;–&nbsp;641037<br>
+          Tamil Nadu, India<br>
+          <a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a> · <a href="mailto:rds@esys.co.in">rds@esys.co.in</a>
+        </address>
+        <div class="footer__social">
+          <a href="#" aria-label="EnergySYS on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22V21h-4z"/></svg></a>
+          <a href="#" aria-label="EnergySYS on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.2 5 12 5 12 5s-7.2 0-8.8.5A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8C4.8 19 12 19 12 19s7.2 0 8.8-.5a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM10 15.5v-7l6 3.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html?category=Control+Boards">Control boards</a></li>
+          <li><a href="products.html?category=Panels">Rack panels</a></li>
+          <li><a href="products.html?category=Cables">Cable assemblies</a></li>
+          <li><a href="products.html">Full catalogue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="failure-report.html">Service report</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="resources.html#careers">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get a quote</h3>
+        <ul>
+          <li><a href="contact.html">Request a quote</a></li>
+          <li><a href="resources.html#downloads">Download brochure</a></li>
+          <li><a href="resources.html#downloads">Product catalogue (PDF)</a></li>
+          <li><a href="tel:+919940247490">Call the workshop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> EnergySYS · Twintronics. All rights reserved.</span>
+      <span><a href="#">Terms of use</a> · <a href="#">Privacy</a> · <a href="#">Cancellation &amp; refund</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="svc-toast-host"></div>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/particles.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
+<script src="assets/js/service-auth.js?v=3"></script>
+<script src="assets/js/service-report.js?v=3"></script>
+<script>
+/* Service menu — inline fallback so Wind/Solar works even if main.js is blocked/cached */
+(function(){var li=document.querySelector(".nav__list .has-drop.drop-click");if(!li)return;var b=li.querySelector("a,.drop-toggle"),d=li.querySelector(".drop");if(!b||!d)return;li.setAttribute("data-svc-inline","1");var o=false;function s(){o=true;d.style.cssText="display:block;opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:none;";b.setAttribute("aria-expanded","true");li.classList.add("is-open");}function h(){o=false;d.style.cssText="display:none;";b.setAttribute("aria-expanded","false");li.classList.remove("is-open");}b.addEventListener("click",function(e){e.preventDefault();o?h():s();});b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();o?h():s();}});document.addEventListener("click",function(e){if(o&&!li.contains(e.target))h();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&o)h();});h();})();
+</script>
+</body>
+</html>

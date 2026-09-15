@@ -1,0 +1,21 @@
+{
+  "name": "energysys-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EnergySYS website + Service Failure Report tool (Express, node:sqlite, Nodemailer)",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server/server.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch server/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "multer": "^2.3.0",
+    "nodemailer": "^9.1.1",
+    "pdfkit": "^0.15.0"
+  },
+  "engines": {
+    "node": ">=22.5"
+  }
+}

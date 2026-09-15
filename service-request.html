@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G8D Wind Farm Service Request — EnergySYS</title>
+<meta name="description" content="Submit a G8D (8D) wind farm service request to EnergySYS — team, problem, containment, root cause, corrective action, validation, prevention and closure, with photo and document uploads.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/enhance.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<canvas id="tech-particles" aria-hidden="true"></canvas>
+<div class="tech-bg-fallback" aria-hidden="true"></div>
+
+<div class="topbar">
+  <div class="container topbar__inner">
+    <ul>
+      <li><a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a></li>
+      <li class="is-optional"><a href="mailto:rds@esys.co.in">rds@esys.co.in</a></li>
+    </ul>
+    <ul>
+      <li class="topbar__meta">Mon–Sat · 09:30–18:00 IST</li>
+      <li class="is-optional"><a href="#" aria-label="EnergySYS on LinkedIn">LinkedIn</a></li>
+    </ul>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.svg" alt="EnergySYS — home" width="210" height="44">
+      <span class="brand__sub">Wind&nbsp;turbine<br>parts&nbsp;&amp;&nbsp;service</span>
+    </a>
+    <form class="search" action="products.html" method="get" role="search">
+      <label class="visually-hidden" for="hdr-cat">Product category</label>
+      <select id="hdr-cat" name="category">
+        <option value="">All categories</option>
+        <option>Control Boards</option><option>Panels</option><option>Cables</option><option>Power Components</option>
+      </select>
+      <label class="visually-hidden" for="hdr-q">Search parts</label>
+      <input id="hdr-q" type="search" name="q" placeholder="Search a part or code…">
+      <button type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+    </form>
+    <a class="btn btn--primary header__cta" href="contact.html">Request a quote</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+  </div>
+</header>
+
+<nav class="nav" id="site-nav">
+  <div class="container">
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About&nbsp;Us</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li class="has-drop drop-click">
+        <a class="drop-toggle" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">Service
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="services.html">Wind</a></li>
+          <li><a href="solar-service.html">Solar</a></li>
+        </ul>
+      </li>
+      <li class="has-drop">
+        <a href="resources.html">Resources
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="resources.html#clients">Clients</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="resources.html#careers">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="contact.html">Contact&nbsp;Us</a></li>
+    </ul>
+    <div class="nav__mobile-extra"><a class="btn btn--primary" href="contact.html">Request a quote</a></div>
+  </div>
+</nav>
+
+<main id="main">
+<section class="page-head page-head--photo">
+  <div class="media-cover" data-parallax="0.14">
+    <picture>
+      <source type="image/webp" srcset="assets/img/photos/wind-aerial-800.webp 800w, assets/img/photos/wind-aerial-1200.webp 1200w, assets/img/photos/wind-aerial-1920.webp 1920w" sizes="100vw">
+      <img src="assets/img/photos/wind-aerial-1200.jpg" srcset="assets/img/photos/wind-aerial-800.jpg 800w, assets/img/photos/wind-aerial-1200.jpg 1200w, assets/img/photos/wind-aerial-1920.jpg 1920w" sizes="100vw" alt="Aerial view of a wind farm" loading="eager" decoding="async" width="1920" height="1280">
+    </picture>
+  </div>
+  <div class="container">
+    <p class="eyebrow">Field service / G8D request</p>
+    <h1>G8D Wind Farm Service Request</h1>
+    <p>An 8-discipline (G8D) problem-solving request for wind turbine and wind-farm faults — team, problem, containment, root cause, corrective action, validation, prevention and closure.</p>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span>G8D service request</nav>
+  </div>
+</section>
+
+<section class="section g8d">
+  <div class="container">
+    <div class="g8d-wrap">
+
+      <div class="g8d-topline">
+        <a class="link-arrow link-arrow--back" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Back to Home
+        </a>
+        <span class="g8d-draftline" id="g8d-draftline" hidden>Draft <b id="g8d-draft-ref"></b> · saved <span id="g8d-draft-saved">—</span></span>
+      </div>
+
+      <!--
+        G8D WIND FARM SERVICE REQUEST — an 8-discipline (8D) problem-solving form.
+        Drafts:  POST/GET /api/g8d/draft  (server/g8d.js) — JSON, no files, resumable via ?draft=<id>.
+        Submit:  POST /api/g8d/submit (multipart/form-data) — validates, stores in SQLite
+        (g8d_requests / g8d_files), saves uploads under server/uploads/g8d/, emails
+        SERVICE_REQUEST_TO and generates a PDF at GET /api/g8d/report/<id>.pdf.
+        Recipient + SMTP credentials live only in server/.env — never in this file.
+      -->
+
+      <nav class="g8d-tracker" id="g8d-tracker" aria-label="G8D progress">
+        <ol>
+          <li data-step="0" class="is-active"><button type="button"><span class="g8d-tracker__dot">D1</span><span class="g8d-tracker__label">Team</span></button></li>
+          <li data-step="1"><button type="button"><span class="g8d-tracker__dot">D2</span><span class="g8d-tracker__label">Problem</span></button></li>
+          <li data-step="2"><button type="button"><span class="g8d-tracker__dot">D3</span><span class="g8d-tracker__label">Containment</span></button></li>
+          <li data-step="3"><button type="button"><span class="g8d-tracker__dot">D4</span><span class="g8d-tracker__label">Root Cause</span></button></li>
+          <li data-step="4"><button type="button"><span class="g8d-tracker__dot">D5</span><span class="g8d-tracker__label">Corrective</span></button></li>
+          <li data-step="5"><button type="button"><span class="g8d-tracker__dot">D6</span><span class="g8d-tracker__label">Validate</span></button></li>
+          <li data-step="6"><button type="button"><span class="g8d-tracker__dot">D7</span><span class="g8d-tracker__label">Prevent</span></button></li>
+          <li data-step="7"><button type="button"><span class="g8d-tracker__dot">D8</span><span class="g8d-tracker__label">Closure</span></button></li>
+          <li data-step="8"><button type="button"><span class="g8d-tracker__dot">✓</span><span class="g8d-tracker__label">Attach &amp; Submit</span></button></li>
+        </ol>
+      </nav>
+
+      <form id="g8d-form" novalidate>
+        <p class="form-status" role="status" aria-live="polite" hidden></p>
+
+        <div class="g8d-step is-active" data-step="0">
+          <div class="g8d-card">
+            <h2><span class="g8d-card__idx">D1</span> Establish the Team</h2>
+            <p class="g8d-card__hint">Who is running and supporting this 8D.</p>
+            <div class="form-grid">
+            <div class="field">
+              <label for="g8d-d1-team_leader">Team Leader <span class="req" aria-hidden="true">*</span></label>
+              <input id="g8d-d1-team_leader" name="team_leader" type="text" required>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d1-d_team">D-Team</label>
+              <input id="g8d-d1-d_team" name="d_team" type="text" placeholder="e.g. Electrical &amp; Controls Team">
+              <span class="field__hint">The team / department leading this 8D.</span>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d1-company_name">Company Name <span class="req" aria-hidden="true">*</span></label>
+              <input id="g8d-d1-company_name" name="company_name" type="text" required>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d1-contact_person">Contact Person <span class="req" aria-hidden="true">*</span></label>
+              <input id="g8d-d1-contact_person" name="contact_person" type="text" required>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d1-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="g8d-d1-email" name="email" type="email" required>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d1-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+              <input id="g8d-d1-phone" name="phone" type="tel" required>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d1-service_engineer">Service Engineer</label>
+              <input id="g8d-d1-service_engineer" name="service_engineer" type="text" placeholder="Assigned EnergySYS engineer, if known">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            </div>
+          </div>
+          <div class="g8d-repeater" id="g8d-team-repeater">
+            <h3>Team Members</h3>
+            <p class="field__hint">Everyone contributing to this 8D besides the team leader.</p>
+            <div class="g8d-repeater__rows" id="g8d-team-rows"></div>
+            <button type="button" class="btn-add" id="g8d-team-add">＋ Add team member</button>
+          </div>
+        </div>
+
+        <div class="g8d-step" data-step="1" hidden>
+            <datalist id="oem-list">
+              <option>Suzlon</option><option>Vestas</option><option>Siemens Gamesa</option>
+              <option>Senvion</option><option>GE</option><option>Nordex</option>
+              <option>Enercon</option><option>Regen Powertech</option><option>Inox Wind</option>
+              <option>Wind World</option><option>NEPC</option>
+            </datalist>
+          <div class="g8d-card">
+            <h2><span class="g8d-card__idx">D2</span> Describe the Problem</h2>
+            <div class="form-grid">
+            <div class="field">
+              <label for="g8d-d2-wind_farm_name">Wind Farm Name <span class="req" aria-hidden="true">*</span></label>
+              <input id="g8d-d2-wind_farm_name" name="wind_farm_name" type="text" required>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d2-wind_farm_location">Wind Farm Location <span class="req" aria-hidden="true">*</span></label>
+              <input id="g8d-d2-wind_farm_location" name="wind_farm_location" type="text" required>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d2-turbine_id">Turbine ID <span class="req" aria-hidden="true">*</span></label>
+              <input id="g8d-d2-turbine_id" name="turbine_id" type="text" required placeholder="e.g. WTG-07">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d2-oem_manufacturer">OEM / Manufacturer</label>
+              <input id="g8d-d2-oem_manufacturer" name="oem_manufacturer" type="text" placeholder="e.g. Suzlon, Vestas, Siemens Gamesa" list="oem-list">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d2-turbine_model">Turbine Model</label>
+              <input id="g8d-d2-turbine_model" name="turbine_model" type="text" placeholder="e.g. S97, V90, SG 2.1-114">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d2-serial_number">Serial Number</label>
+              <input id="g8d-d2-serial_number" name="serial_number" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d2-component_system">Component / System</label>
+              <input id="g8d-d2-component_system" name="component_system" type="text" placeholder="e.g. Pitch system, Yaw drive, Gearbox, Converter">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d2-failure_date">Failure Date</label>
+              <input id="g8d-d2-failure_date" name="failure_date" type="date">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d2-units_affected">Number of Units Affected</label>
+              <input id="g8d-d2-units_affected" name="units_affected" type="number" min="0">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d2-turbine_status">Current Turbine Status</label>
+              <select id="g8d-d2-turbine_status" name="turbine_status">
+                <option value="">Select…</option>
+                <option>Running normally</option>
+                <option>Running with fault / derated</option>
+                <option>Stopped — awaiting service</option>
+                <option>Stopped — safety related</option>
+                <option>Under maintenance</option>
+                <option>Unknown</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d2-failure_category">Failure Category</label>
+              <select id="g8d-d2-failure_category" name="failure_category">
+                <option value="">Select…</option>
+                <option>Completely Dead</option>
+                <option>No Output</option>
+                <option>Intermittent Fault</option>
+                <option>Partial Output</option>
+                <option>Display / Indicator Fault</option>
+                <option>Controls Not Responding</option>
+                <option>Overheating</option>
+                <option>Physical / Mechanical Damage</option>
+                <option>Component Burn / Smell</option>
+                <option>Software / Firmware Issue</option>
+                <option>Communication / Connectivity Issue</option>
+                <option>Other</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d2-fault_error_code">Fault / Error Code</label>
+              <input id="g8d-d2-fault_error_code" name="fault_error_code" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d2-problem_description">Detailed Problem Description <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="g8d-d2-problem_description" name="problem_description" required placeholder="e.g. Unit Dead — 3 turbines fully stopped, 1 turbine running with no output. Describe what was observed, when, and any diagnostics already done."></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g8d-step" data-step="2" hidden>
+          <div class="g8d-card">
+            <h2><span class="g8d-card__idx">D3</span> Interim Containment Action</h2>
+            <div class="form-grid">
+            <div class="field is-full">
+              <label for="g8d-d3-immediate_action">Immediate Action Taken</label>
+              <textarea id="g8d-d3-immediate_action" name="immediate_action"></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d3-turbine_shutdown">Turbine Shutdown</label>
+              <select id="g8d-d3-turbine_shutdown" name="turbine_shutdown">
+                <option value="">Select…</option>
+                <option>No shutdown</option>
+                <option>Partial shutdown</option>
+                <option>Full shutdown</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d3-temporary_repair">Temporary Repair</label>
+              <input id="g8d-d3-temporary_repair" name="temporary_repair" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d3-temporary_solution">Temporary Solution</label>
+              <input id="g8d-d3-temporary_solution" name="temporary_solution" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d3-downtime">Downtime</label>
+              <input id="g8d-d3-downtime" name="downtime" type="text" placeholder="e.g. 6 hours">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d3-safety_risk">Safety Risk</label>
+              <select id="g8d-d3-safety_risk" name="safety_risk">
+                <option value="">Select…</option>
+                <option>None</option>
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d3-containment_details">Containment Details</label>
+              <textarea id="g8d-d3-containment_details" name="containment_details"></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g8d-step" data-step="3" hidden>
+          <div class="g8d-card">
+            <h2><span class="g8d-card__idx">D4</span> Root Cause Analysis</h2>
+            <p class="g8d-card__hint">5 Why analysis — keep asking “why” until you reach the root cause.</p>
+            <div class="form-grid">
+            <div class="field is-full">
+              <label for="g8d-d4-why1">Why 1</label>
+              <input id="g8d-d4-why1" name="why1" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d4-why2">Why 2</label>
+              <input id="g8d-d4-why2" name="why2" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d4-why3">Why 3</label>
+              <input id="g8d-d4-why3" name="why3" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d4-why4">Why 4</label>
+              <input id="g8d-d4-why4" name="why4" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d4-why5">Why 5</label>
+              <input id="g8d-d4-why5" name="why5" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            </div>
+          </div>
+          <div class="g8d-card">
+            <h2><span class="g8d-card__idx">D4</span> Root Cause Summary</h2>
+            <div class="form-grid">
+            <div class="field is-full">
+              <label for="g8d-d4-suspected_root_cause">Suspected Root Cause</label>
+              <textarea id="g8d-d4-suspected_root_cause" name="suspected_root_cause"></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d4-confirmed_root_cause">Confirmed Root Cause</label>
+              <textarea id="g8d-d4-confirmed_root_cause" name="confirmed_root_cause"></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d4-failure_mechanism">Failure Mechanism</label>
+              <input id="g8d-d4-failure_mechanism" name="failure_mechanism" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d4-root_cause_category">Root Cause Category</label>
+              <select id="g8d-d4-root_cause_category" name="root_cause_category">
+                <option value="">Select…</option>
+                <option>Design</option>
+                <option>Manufacturing</option>
+                <option>Material</option>
+                <option>Maintenance</option>
+                <option>Operator Error</option>
+                <option>Component Wear</option>
+                <option>Environmental</option>
+                <option>Software / Firmware</option>
+                <option>Electrical</option>
+                <option>Other</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g8d-step" data-step="4" hidden>
+          <div class="g8d-card">
+            <h2><span class="g8d-card__idx">D5</span> Permanent Corrective Action</h2>
+            <p class="g8d-card__hint">Add one entry per corrective action — as many as this 8D needs.</p>
+            <div class="g8d-repeater__rows" id="g8d-ca-rows"></div>
+            <button type="button" class="btn-add" id="g8d-ca-add">＋ Add corrective action</button>
+          </div>
+        </div>
+
+        <div class="g8d-step" data-step="5" hidden>
+          <div class="g8d-card">
+            <h2><span class="g8d-card__idx">D6</span> Implement &amp; Validate Corrective Action</h2>
+            <div class="form-grid">
+            <div class="field">
+              <label for="g8d-d6-action_implemented">Corrective Action Implemented</label>
+              <select id="g8d-d6-action_implemented" name="action_implemented">
+                <option value="">Select…</option>
+                <option>Yes</option>
+                <option>No</option>
+                <option>Partial</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d6-implementation_date">Implementation Date</label>
+              <input id="g8d-d6-implementation_date" name="implementation_date" type="date">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d6-implemented_by">Implemented By</label>
+              <input id="g8d-d6-implemented_by" name="implemented_by" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d6-validation_method">Validation Method</label>
+              <input id="g8d-d6-validation_method" name="validation_method" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d6-test_performed">Test Performed</label>
+              <input id="g8d-d6-test_performed" name="test_performed" type="text">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d6-test_result">Test Result</label>
+              <select id="g8d-d6-test_result" name="test_result">
+                <option value="">Select…</option>
+                <option>Pass</option>
+                <option>Fail</option>
+                <option>Partial</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d6-returned_to_service">Turbine Returned to Service</label>
+              <select id="g8d-d6-returned_to_service" name="returned_to_service">
+                <option value="">Select…</option>
+                <option>Yes</option>
+                <option>No</option>
+                <option>Pending</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d6-monitoring_period">Monitoring Period</label>
+              <input id="g8d-d6-monitoring_period" name="monitoring_period" type="text" placeholder="e.g. 30 days">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d6-performance_after_repair">Performance After Repair</label>
+              <textarea id="g8d-d6-performance_after_repair" name="performance_after_repair"></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d6-validation_comments">Validation Comments</label>
+              <textarea id="g8d-d6-validation_comments" name="validation_comments"></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g8d-step" data-step="6" hidden>
+          <div class="g8d-card">
+            <h2><span class="g8d-card__idx">D7</span> Prevent Recurrence</h2>
+            <div class="form-grid">
+            <div class="field is-full">
+              <label for="g8d-d7-preventive_action">Preventive Action</label>
+              <textarea id="g8d-d7-preventive_action" name="preventive_action"></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d7-maintenance_procedure_updated">Maintenance Procedure Updated</label>
+              <select id="g8d-d7-maintenance_procedure_updated" name="maintenance_procedure_updated">
+                <option value="">Select…</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d7-inspection_frequency_changed">Inspection Frequency Changed</label>
+              <input id="g8d-d7-inspection_frequency_changed" name="inspection_frequency_changed" type="text" placeholder="e.g. Quarterly → Monthly">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d7-spare_parts_spec_updated">Spare Parts Specification Updated</label>
+              <select id="g8d-d7-spare_parts_spec_updated" name="spare_parts_spec_updated">
+                <option value="">Select…</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d7-design_change_required">Design Change Required</label>
+              <select id="g8d-d7-design_change_required" name="design_change_required">
+                <option value="">Select…</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d7-training_required">Training Required</label>
+              <select id="g8d-d7-training_required" name="training_required">
+                <option value="">Select…</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d7-documentation_updated">Documentation Updated</label>
+              <select id="g8d-d7-documentation_updated" name="documentation_updated">
+                <option value="">Select…</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d7-similar_turbines_inspected">Similar Turbines Inspected</label>
+              <input id="g8d-d7-similar_turbines_inspected" name="similar_turbines_inspected" type="text" placeholder="e.g. WTG-05, WTG-11">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d7-supplier_oem_action">Supplier / OEM Action</label>
+              <textarea id="g8d-d7-supplier_oem_action" name="supplier_oem_action"></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d7-lessons_learned">Lessons Learned</label>
+              <textarea id="g8d-d7-lessons_learned" name="lessons_learned"></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g8d-step" data-step="7" hidden>
+          <div class="g8d-card">
+            <h2><span class="g8d-card__idx">D8</span> Closure &amp; Recognition</h2>
+            <div class="form-grid">
+            <div class="field">
+              <label for="g8d-d8-completion_date">G8D Completion Date</label>
+              <input id="g8d-d8-completion_date" name="completion_date" type="date">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d8-final_status">Final Problem Status</label>
+              <select id="g8d-d8-final_status" name="final_status">
+                <option value="">Select…</option>
+                <option>Closed</option>
+                <option>Open</option>
+                <option>Monitoring</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d8-customer_approval">Customer Approval</label>
+              <select id="g8d-d8-customer_approval" name="customer_approval">
+                <option value="">Select…</option>
+                <option>Approved</option>
+                <option>Pending</option>
+                <option>Not Required</option>
+              </select>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d8-service_engineer_approval">Service Engineer Approval</label>
+              <input id="g8d-d8-service_engineer_approval" name="service_engineer_approval" type="text" placeholder="Name">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="g8d-d8-team_leader_approval">Team Leader Approval</label>
+              <input id="g8d-d8-team_leader_approval" name="team_leader_approval" type="text" placeholder="Name">
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d8-final_verification">Final Verification</label>
+              <textarea id="g8d-d8-final_verification" name="final_verification"></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            <div class="field is-full">
+              <label for="g8d-d8-customer_comments">Customer Comments</label>
+              <textarea id="g8d-d8-customer_comments" name="customer_comments"></textarea>
+              <span class="field__err" aria-live="polite"></span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g8d-step" data-step="8" hidden>
+          <div class="g8d-card">
+            <h2><span class="g8d-card__idx">·</span> Upload Documents</h2>
+            <p class="g8d-card__hint">Photos, videos, inspection reports, fault logs, maintenance reports, test reports, technical drawings or any other supporting file. Up to 12 files, 25 MB each.</p>
+            <label class="srq-drop" id="g8d-drop" tabindex="0">
+              <input id="g8d-docs" name="attachments" type="file" multiple
+                accept=".pdf,.jpg,.jpeg,.png,.webp,.gif,.heic,.mp4,.mov,.avi,.mkv,.webm,.doc,.docx,.xls,.xlsx,.csv,.txt,.rtf,.dwg,.dxf,.zip,.7z,.rar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M8 8l4-4 4 4"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+              <b>Click to choose files, or drop them here</b>
+              <span>Nothing is uploaded until you submit.</span>
+            </label>
+            <ul class="srq-filelist" id="g8d-filelist" hidden></ul>
+            <span class="field__err" id="g8d-docs-err" aria-live="polite"></span>
+          </div>
+
+          <div class="g8d-card">
+            <h2><span class="g8d-card__idx">·</span> Review</h2>
+            <p class="g8d-card__hint">A quick summary before you submit. Use Back to change anything.</p>
+            <dl class="g8d-review" id="g8d-review"></dl>
+          </div>
+
+          <div class="field is-full" hidden aria-hidden="true">
+            <label for="g8d-website">Leave this field empty</label>
+            <input id="g8d-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="g8d-nav">
+          <button type="button" class="btn btn--ghost" id="g8d-back" disabled>← Back</button>
+          <div class="g8d-nav__right">
+            <button type="button" class="btn btn--ghost" id="g8d-save-draft">Save Draft</button>
+            <button type="button" class="btn btn--primary" id="g8d-next">Next →</button>
+            <button class="btn btn--primary btn--send" type="submit" id="g8d-submit" hidden data-label="SUBMIT G8D SERVICE REQUEST">
+              <span class="btn--send__text">SUBMIT G8D SERVICE REQUEST</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <span class="btn--send__spin spinner" hidden></span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- animated success panel (assets/js/g8d-request.js) -->
+      <div class="query-success g8d-success" id="g8d-success" hidden role="status" aria-live="polite">
+        <svg class="query-success__check" viewBox="0 0 52 52" aria-hidden="true">
+          <circle class="query-success__circle" cx="26" cy="26" r="24" fill="none"/>
+          <path class="query-success__tick" fill="none" d="M14 27 l8 8 l16 -18"/>
+        </svg>
+        <h3>G8D Service Request Submitted Successfully</h3>
+        <p>Your G8D wind farm service request has been received — our team will review it and take it forward through the remaining disciplines.</p>
+        <dl class="g8d-success__grid">
+          <div><dt>Service Request ID</dt><dd id="g8d-res-id">—</dd></div>
+          <div><dt>Submission Date</dt><dd id="g8d-res-date">—</dd></div>
+          <div><dt>G8D Status</dt><dd id="g8d-res-status">—</dd></div>
+          <div><dt>Current Discipline</dt><dd id="g8d-res-discipline">—</dd></div>
+        </dl>
+        <p style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+          <a class="btn btn--primary btn--sm" id="g8d-download" href="#" target="_blank" rel="noopener">Download G8D Report</a>
+          <button type="button" class="btn btn--ghost btn--sm" id="g8d-again">Submit another request</button>
+          <a class="btn btn--ghost btn--sm" href="index.html">Back to Home</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/logo-white.svg" alt="EnergySYS" width="210" height="40">
+        <p>Manufacture, refurbishment, testing and supply of critical wind turbine components. A Twintronics enterprise.</p>
+        <address class="footer__addr">
+          New#50, Old#224, Nethaji Road<br>
+          PN Palayam, Coimbatore&nbsp;–&nbsp;641037<br>
+          Tamil Nadu, India<br>
+          <a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a> · <a href="mailto:rds@esys.co.in">rds@esys.co.in</a>
+        </address>
+        <div class="footer__social">
+          <a href="#" aria-label="EnergySYS on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22V21h-4z"/></svg></a>
+          <a href="#" aria-label="EnergySYS on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.2 5 12 5 12 5s-7.2 0-8.8.5A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8C4.8 19 12 19 12 19s7.2 0 8.8-.5a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM10 15.5v-7l6 3.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html?category=Control+Boards">Control boards</a></li>
+          <li><a href="products.html?category=Panels">Rack panels</a></li>
+          <li><a href="products.html?category=Cables">Cable assemblies</a></li>
+          <li><a href="products.html">Full catalogue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="services.html">Service</a></li>
+          <li><a href="service-request.html">Request service</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get a quote</h3>
+        <ul>
+          <li><a href="contact.html">Request a quote</a></li>
+          <li><a href="resources.html#downloads">Download brochure</a></li>
+          <li><a href="resources.html#downloads">Product catalogue (PDF)</a></li>
+          <li><a href="tel:+919940247490">Call the workshop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> EnergySYS · Twintronics. All rights reserved.</span>
+      <span><a href="#">Terms of use</a> · <a href="#">Privacy</a> · <a href="#">Cancellation &amp; refund</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/particles.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
+<script src="assets/js/g8d-request.js" defer></script>
+<script>
+/* Service menu — inline fallback so Wind/Solar works even if main.js is blocked/cached */
+(function(){var li=document.querySelector(".nav__list .has-drop.drop-click");if(!li)return;var b=li.querySelector("a,.drop-toggle"),d=li.querySelector(".drop");if(!b||!d)return;li.setAttribute("data-svc-inline","1");var o=false;function s(){o=true;d.style.cssText="display:block;opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:none;";b.setAttribute("aria-expanded","true");li.classList.add("is-open");}function h(){o=false;d.style.cssText="display:none;";b.setAttribute("aria-expanded","false");li.classList.remove("is-open");}b.addEventListener("click",function(e){e.preventDefault();o?h():s();});b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();o?h():s();}});document.addEventListener("click",function(e){if(o&&!li.contains(e.target))h();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&o)h();});h();})();
+</script>
+</body>
+</html>

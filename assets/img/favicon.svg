@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="EnergySYS">
+  <circle cx="24" cy="24" r="22" fill="none" stroke="#F26A1B" stroke-width="3"/>
+  <rect x="8.5" y="8.5" width="31" height="31" rx="7.5" fill="#00A24C"/>
+  <path d="M13.5 31.5c1-8.2 7.7-14.4 16-14.9-4.8 2.2-8.3 5.8-9.9 10.4 3.2-2.6 7-3.9 11.2-3.7-3.6 2.3-6 4.8-7.4 8.2-2.7-.6-6.2-.5-9.9 0z" fill="#FFFFFF"/>
+</svg>

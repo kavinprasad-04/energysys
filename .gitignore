@@ -1,0 +1,11 @@
+node_modules/
+server/.env
+server/.env.*
+!server/.env.example
+server/data/
+server/uploads/
+*.log
+.DS_Store
+
+# original hi-res media (optimised copies live in assets/video + assets/img/photos)
+assets/_source/

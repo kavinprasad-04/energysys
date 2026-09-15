@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Products — EnergySYS wind turbine parts catalogue</title>
+<meta name="description" content="Browse EnergySYS wind turbine parts by category — couplings, bearing housings, rotating joints, power packs, FRP parts and more. Send a code for a price.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/enhance.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<canvas id="tech-particles" aria-hidden="true"></canvas>
+<div class="tech-bg-fallback" aria-hidden="true"></div>
+
+<div class="topbar">
+  <div class="container topbar__inner">
+    <ul>
+      <li><a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a></li>
+      <li class="is-optional"><a href="mailto:rds@esys.co.in">rds@esys.co.in</a></li>
+    </ul>
+    <ul>
+      <li class="topbar__meta">Mon–Sat · 09:30–18:00 IST</li>
+      <li class="is-optional"><a href="#" aria-label="EnergySYS on LinkedIn">LinkedIn</a></li>
+    </ul>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.svg" alt="EnergySYS — home" width="210" height="44">
+      <span class="brand__sub">Wind&nbsp;turbine<br>parts&nbsp;&amp;&nbsp;service</span>
+    </a>
+    <form class="search" action="products.html" method="get" role="search">
+      <label class="visually-hidden" for="hdr-cat">Product category</label>
+      <select id="hdr-cat" name="category">
+        <option value="">All categories</option>
+        <option>Control Boards</option><option>Panels</option><option>Cables</option><option>Power Components</option>
+      </select>
+      <label class="visually-hidden" for="hdr-q">Search parts</label>
+      <input id="hdr-q" type="search" name="q" placeholder="Search a part or code…">
+      <button type="submit" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+    </form>
+    <a class="btn btn--primary header__cta" href="contact.html">Request a quote</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span></button>
+  </div>
+</header>
+
+<nav class="nav" id="site-nav">
+  <div class="container">
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About&nbsp;Us</a></li>
+      <li><a href="products.html" aria-current="page">Products</a></li>
+      <li class="has-drop drop-click">
+        <a class="drop-toggle" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">Service
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="services.html">Wind</a></li>
+          <li><a href="solar-service.html">Solar</a></li>
+        </ul>
+      </li>
+      <li class="has-drop">
+        <a href="resources.html">Resources
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="drop">
+          <li><a href="resources.html#clients">Clients</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="resources.html#careers">Careers</a></li>
+        </ul>
+      </li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="contact.html">Contact&nbsp;Us</a></li>
+    </ul>
+    <div class="nav__mobile-extra"><a class="btn btn--primary" href="contact.html">Request a quote</a></div>
+  </div>
+</nav>
+
+<main id="main">
+
+<section class="section">
+  <div class="container">
+    <div class="shop-layout">
+
+      <!-- ============ FILTER SIDEBAR ============ -->
+      <aside class="shop-filters" id="shop-filters" aria-label="Filter products">
+        <button type="button" class="shop-filters__toggle" id="filters-toggle" aria-expanded="false" aria-controls="filters-panel">
+          Filters
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+        </button>
+
+        <div class="shop-filters__panel" id="filters-panel">
+          <div class="shop-filters__head">
+            <h2>Filters</h2>
+            <button type="button" class="shop-clear" id="shop-clear" hidden>Clear all</button>
+          </div>
+
+          <div class="field shop-search">
+            <label class="visually-hidden" for="shop-q">Search products</label>
+            <input id="shop-q" type="search" placeholder="Search code or name…">
+          </div>
+
+          <details class="facet" open>
+            <summary>WTG Manufacturers</summary>
+            <input type="search" class="facet-search" id="mfr-search" placeholder="Search…" aria-label="Filter manufacturers">
+            <div class="facet__list" data-facet="mfr">
+              <label class="facet__row"><input type="checkbox" value="Regen"><span>Regen</span><small>24</small></label>
+              <label class="facet__row"><input type="checkbox" value="Vestas"><span>Vestas</span><small>0</small></label>
+              <label class="facet__row"><input type="checkbox" value="Siemens Gamesa"><span>Siemens Gamesa</span><small>0</small></label>
+              <label class="facet__row"><input type="checkbox" value="Senvion"><span>Senvion</span><small>0</small></label>
+              <label class="facet__row"><input type="checkbox" value="Suzlon"><span>Suzlon</span><small>0</small></label>
+              <label class="facet__row"><input type="checkbox" value="GE"><span>GE</span><small>0</small></label>
+              <label class="facet__row"><input type="checkbox" value="Inox Wind"><span>Inox Wind</span><small>0</small></label>
+              <label class="facet__row"><input type="checkbox" value="Wind World"><span>Wind World</span><small>0</small></label>
+            </div>
+            <button type="button" class="facet-apply" data-apply="mfr">Filter</button>
+          </details>
+
+          <div class="facet facet--links">
+            <div class="facet__title">Shop By Categories</div>
+            <ul class="cat-links" data-facet="cat">
+              <li><button type="button" class="cat-link is-active" data-cat=""><span class="cat-link__ch" aria-hidden="true">›</span><span class="cat-link__name">All categories</span><small>24</small></button></li>
+              <li><button type="button" class="cat-link" data-cat="Control Boards"><span class="cat-link__ch" aria-hidden="true">›</span><span class="cat-link__name">Control Boards</span><small>5</small></button></li>
+              <li><button type="button" class="cat-link" data-cat="Panels"><span class="cat-link__ch" aria-hidden="true">›</span><span class="cat-link__name">Panels</span><small>3</small></button></li>
+              <li><button type="button" class="cat-link" data-cat="Cables"><span class="cat-link__ch" aria-hidden="true">›</span><span class="cat-link__name">Cables</span><small>8</small></button></li>
+              <li><button type="button" class="cat-link" data-cat="Power Components"><span class="cat-link__ch" aria-hidden="true">›</span><span class="cat-link__name">Power Components</span><small>8</small></button></li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ============ RESULTS ============ -->
+      <div class="shop-main">
+
+        <div class="shop-toolbar">
+          <p class="shop-toolbar__count"><span id="result-count">Showing 1–20 of 24 results</span></p>
+          <div class="shop-toolbar__right">
+            <div class="shop-sort">
+              <label for="shop-sort">Sort By</label>
+              <select id="shop-sort">
+                <option value="default">Newest First</option>
+                <option value="name">Name A–Z</option>
+                <option value="code">Part code A–Z</option>
+              </select>
+            </div>
+            <div class="view-toggle" role="group" aria-label="View">
+              <button type="button" id="view-grid" aria-pressed="true" aria-label="Grid view">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              </button>
+              <button type="button" id="view-list" aria-pressed="false" aria-label="List view">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-active" id="shop-active"></div>
+
+        <div class="prod-grid" id="product-grid">
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Control Boards" data-name="ccu base board" data-search="CCU-BB01 ccu base board control boards ccu base board">
+            <div class="prod-card__fig"><span class="prod-card__cat">Control Boards</span><picture><source type="image/webp" srcset="assets/img/products/ccu-base-board.webp"><img class="prod-card__ph" src="assets/img/products/ccu-base-board.jpg" alt="CCU base board" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CCU-BB01</span>
+              <h3 class="prod-card__name">CCU base board</h3>
+              <p class="prod-card__spec">Converter control &amp; drive (CCU) base board — on-board DC/DC supplies and rack backplane connectors, populated and tested.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CCU-BB01">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Control Boards" data-name="ccu regular board" data-search="CCU-RR02 ccu regular board control boards ccu regular board">
+            <div class="prod-card__fig"><span class="prod-card__cat">Control Boards</span><picture><source type="image/webp" srcset="assets/img/products/ccu-regular-board.webp"><img class="prod-card__ph" src="assets/img/products/ccu-regular-board.jpg" alt="CCU regular board" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CCU-RR02</span>
+              <h3 class="prod-card__name">CCU regular board</h3>
+              <p class="prod-card__spec">CCU regulator board (R-Regler) — analogue control regulator card, form-fit-function replacement, bench-tested.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CCU-RR02">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Control Boards" data-name="ccu netz board" data-search="CCU-NZ03 ccu netz board control boards ccu netz board">
+            <div class="prod-card__fig"><span class="prod-card__cat">Control Boards</span><picture><source type="image/webp" srcset="assets/img/products/ccu-netz-board.webp"><img class="prod-card__ph" src="assets/img/products/ccu-netz-board.jpg" alt="CCU netz board" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CCU-NZ03</span>
+              <h3 class="prod-card__name">CCU netz board</h3>
+              <p class="prod-card__spec">CCU netz (grid-side) board — line-converter control interface, supplied with a tested serial record.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CCU-NZ03">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Panels" data-name="ccu front panel" data-search="CCU-FP04 ccu front panel panels ccu front panel">
+            <div class="prod-card__fig"><span class="prod-card__cat">Panels</span><picture><source type="image/webp" srcset="assets/img/products/ccu-front-panel.webp"><img class="prod-card__ph" src="assets/img/products/ccu-front-panel.jpg" alt="CCU front panel" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CCU-FP04</span>
+              <h3 class="prod-card__name">CCU front panel</h3>
+              <p class="prod-card__spec">Front panel board for the CCU rack — status LED array and DIP address switches.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CCU-FP04">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Panels" data-name="ccu back panel" data-search="CCU-BP05 ccu back panel panels ccu back panel">
+            <div class="prod-card__fig"><span class="prod-card__cat">Panels</span><picture><source type="image/webp" srcset="assets/img/products/ccu-back-panel.webp"><img class="prod-card__ph" src="assets/img/products/ccu-back-panel.jpg" alt="CCU back panel" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CCU-BP05</span>
+              <h3 class="prod-card__name">CCU back panel</h3>
+              <p class="prod-card__spec">Rear backplane for the CCU rack — D-sub slot connectors and inter-board wiring.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CCU-BP05">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Cables" data-name="ct cables" data-search="CBL-CT06 ct cables cables ct cables">
+            <div class="prod-card__fig"><span class="prod-card__cat">Cables</span><picture><source type="image/webp" srcset="assets/img/products/ct-cables.webp"><img class="prod-card__ph" src="assets/img/products/ct-cables.jpg" alt="CT cables" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CBL-CT06</span>
+              <h3 class="prod-card__name">CT cables</h3>
+              <p class="prod-card__spec">Current-transformer signal cable — screened lead, connector to flying-lead, for converter current measurement.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CBL-CT06">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Cables" data-name="igbt cable 15 pin" data-search="CBL-IG15 igbt cable 15 pin cables igbt cable">
+            <div class="prod-card__fig"><span class="prod-card__cat">Cables</span><picture><source type="image/webp" srcset="assets/img/products/igbt-cable.webp"><img class="prod-card__ph" src="assets/img/products/igbt-cable.jpg" alt="IGBT cable 15 pin" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CBL-IG15</span>
+              <h3 class="prod-card__name">IGBT cable 15 pin</h3>
+              <p class="prod-card__spec">IGBT gate-drive cable — 15-pin D-sub, screened, power stack to control interconnect.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CBL-IG15">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Cables" data-name="hvio cable 25 pin" data-search="CBL-HV25 hvio cable 25 pin cables igbt">
+            <div class="prod-card__fig"><span class="prod-card__cat">Cables</span><picture><source type="image/webp" srcset="assets/img/products/igbt-cable.webp"><img class="prod-card__ph" src="assets/img/products/igbt-cable.jpg" alt="HVIO cable 25 pin" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CBL-HV25</span>
+              <h3 class="prod-card__name">HVIO cable 25 pin</h3>
+              <p class="prod-card__spec">HVIO cable — 25-pin D-sub, screened, power stack to control interconnect.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CBL-HV25">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Cables" data-name="analog i/o cable 37 pin" data-search="CBL-AIO37 analog i/o cable 37 pin cables analog io signal">
+            <div class="prod-card__fig"><span class="prod-card__cat">Cables</span><picture><source type="image/webp" srcset="assets/img/products/io-cable-37pin.webp"><img class="prod-card__ph" src="assets/img/products/io-cable-37pin.jpg" alt="Analog I/O cable 37 pin" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CBL-AIO37</span>
+              <h3 class="prod-card__name">Analog I/O cable 37 pin</h3>
+              <p class="prod-card__spec">Analog I/O signal cable — 37-pin D-sub, screened, converter to controller interconnect.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CBL-AIO37">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Cables" data-name="digital i/o cable 37 pin" data-search="CBL-DIO37 digital i/o cable 37 pin cables digital io signal">
+            <div class="prod-card__fig"><span class="prod-card__cat">Cables</span><picture><source type="image/webp" srcset="assets/img/products/io-cable-37pin.webp"><img class="prod-card__ph" src="assets/img/products/io-cable-37pin.jpg" alt="Digital I/O cable 37 pin" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CBL-DIO37</span>
+              <h3 class="prod-card__name">Digital I/O cable 37 pin</h3>
+              <p class="prod-card__spec">Digital I/O signal cable — 37-pin D-sub, screened, converter to controller interconnect.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CBL-DIO37">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Cables" data-name="internal ccv assembly cable" data-search="CBL-CCV10 internal ccv assembly cable cables internal ccv assembly cable">
+            <div class="prod-card__fig"><span class="prod-card__cat">Cables</span><picture><source type="image/webp" srcset="assets/img/products/internal-cv-assembly-cable.webp"><img class="prod-card__ph" src="assets/img/products/internal-cv-assembly-cable.jpg" alt="Internal CCV assembly cable" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CBL-CCV10</span>
+              <h3 class="prod-card__name">Internal CCV assembly cable</h3>
+              <p class="prod-card__spec">Internal converter (CCV) ribbon assembly — IDC flat cable, board-to-board interconnect.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CBL-CCV10">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Control Boards" data-name="dc link board" data-search="DCL-LB11 dc link board control boards dc link board">
+            <div class="prod-card__fig"><span class="prod-card__cat">Control Boards</span><picture><source type="image/webp" srcset="assets/img/products/dc-link-board.webp"><img class="prod-card__ph" src="assets/img/products/dc-link-board.jpg" alt="DC link board" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">DCL-LB11</span>
+              <h3 class="prod-card__name">DC link board</h3>
+              <p class="prod-card__spec">DC-link board — balancing / bleed resistor bank (5 W ceramic) with monitoring, EnergySYS build.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=DCL-LB11">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Control Boards" data-name="dc link adaptor board" data-search="DCL-AB12 dc link adaptor board control boards dc link adaptor board">
+            <div class="prod-card__fig"><span class="prod-card__cat">Control Boards</span><picture><source type="image/webp" srcset="assets/img/products/dc-link-operator-board.webp"><img class="prod-card__ph" src="assets/img/products/dc-link-operator-board.jpg" alt="DC link adaptor board" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">DCL-AB12</span>
+              <h3 class="prod-card__name">DC link adaptor board</h3>
+              <p class="prod-card__spec">DC-link adaptor board — terminal I/O with D-sub and IDC interface for DC-link control and status.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=DCL-AB12">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Cables" data-name="dc link cable" data-search="CBL-DL14 dc link cable cables dc link power sense">
+            <div class="prod-card__fig"><span class="prod-card__cat">Cables</span><picture><source type="image/webp" srcset="assets/img/products/dc-link-cable.webp"><img class="prod-card__ph" src="assets/img/products/dc-link-cable.jpg" alt="DC link cable" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CBL-DL14</span>
+              <h3 class="prod-card__name">DC link cable</h3>
+              <p class="prod-card__spec">DC-link power &amp; sense cable — sleeved harness, pluggable terminal block to ferruled leads.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CBL-DL14">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Cables" data-name="dc link adaptor cable" data-search="CBL-DLA15 dc link adaptor cable cables dc link adaptor interconnect">
+            <div class="prod-card__fig"><span class="prod-card__cat">Cables</span><picture><source type="image/webp" srcset="assets/img/products/dc-link-adaptor-cable.webp"><img class="prod-card__ph" src="assets/img/products/dc-link-adaptor-cable.jpg" alt="DC link adaptor cable" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CBL-DLA15</span>
+              <h3 class="prod-card__name">DC link adaptor cable</h3>
+              <p class="prod-card__spec">DC-link adaptor cable — sleeved harness, board-to-board IDC interconnect.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CBL-DLA15">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Power Components" data-name="capacitor 6800uf 400v" data-search="CAP-6800 capacitor 6800uf 400v power components dc-link electrolytic rubycon">
+            <div class="prod-card__fig"><span class="prod-card__cat">Power Components</span><picture><source type="image/webp" srcset="assets/img/products/capacitor-6800uf-400v.webp"><img class="prod-card__ph" src="assets/img/products/capacitor-6800uf-400v.jpg" alt="Capacitor 6800µF 400V" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">CAP-6800</span>
+              <h3 class="prod-card__name">Capacitor 6800µF 400V</h3>
+              <p class="prod-card__spec">DC-link electrolytic capacitor — 6800 µF, 400 V, screw-terminal, 105 °C rated.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=CAP-6800">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Power Components" data-name="fuse 1000a 690v" data-search="FUS-1000 fuse 1000a 690v power components semiconductor protection ar bussmann 170m5466">
+            <div class="prod-card__fig"><span class="prod-card__cat">Power Components</span><picture><source type="image/webp" srcset="assets/img/products/fuse-1000a-690v.webp"><img class="prod-card__ph" src="assets/img/products/fuse-1000a-690v.jpg" alt="Fuse 1000A 690V" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">FUS-1000</span>
+              <h3 class="prod-card__name">Fuse 1000A 690V</h3>
+              <p class="prod-card__spec">Semiconductor protection fuse — 1000 A, 690 V AC, aR, bolt-in, 200 kA breaking.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=FUS-1000">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Power Components" data-name="igbt positive plate" data-search="IGB-PP01 igbt positive plate power components dc busbar plate positive stack">
+            <div class="prod-card__fig"><span class="prod-card__cat">Power Components</span><picture><source type="image/webp" srcset="assets/img/products/igbt-positive-plate.webp"><img class="prod-card__ph" src="assets/img/products/igbt-positive-plate.jpg" alt="IGBT positive plate" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">IGB-PP01</span>
+              <h3 class="prod-card__name">IGBT positive plate</h3>
+              <p class="prod-card__spec">Positive DC busbar plate — stamped and formed, for the IGBT power stack.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=IGB-PP01">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Power Components" data-name="igbt negative plate" data-search="IGB-NP02 igbt negative plate power components dc busbar plate negative stack">
+            <div class="prod-card__fig"><span class="prod-card__cat">Power Components</span><picture><source type="image/webp" srcset="assets/img/products/igbt-negative-plate.webp"><img class="prod-card__ph" src="assets/img/products/igbt-negative-plate.jpg" alt="IGBT negative plate" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">IGB-NP02</span>
+              <h3 class="prod-card__name">IGBT negative plate</h3>
+              <p class="prod-card__spec">Negative DC busbar plate — stamped and formed, for the IGBT power stack.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=IGB-NP02">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Power Components" data-name="insulating sheet" data-search="INS-SH01 insulating sheet power components insulation barrier busbar die-cut">
+            <div class="prod-card__fig"><span class="prod-card__cat">Power Components</span><picture><source type="image/webp" srcset="assets/img/products/insulating-sheet.webp"><img class="prod-card__ph" src="assets/img/products/insulating-sheet.jpg" alt="Insulating sheet" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">INS-SH01</span>
+              <h3 class="prod-card__name">Insulating sheet</h3>
+              <p class="prod-card__spec">Insulation sheet — die-cut barrier between busbar layers in the IGBT stack.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=INS-SH01">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Power Components" data-name="igbt skiip 4 module" data-search="IGB-SK04 igbt skiip 4 module power components semikron power stage driver heatsink">
+            <div class="prod-card__fig"><span class="prod-card__cat">Power Components</span><picture><source type="image/webp" srcset="assets/img/products/igbt-skiip-4-module.webp"><img class="prod-card__ph" src="assets/img/products/igbt-skiip-4-module.jpg" alt="IGBT SKiiP 4 module" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">IGB-SK04</span>
+              <h3 class="prod-card__name">IGBT SKiiP 4 module</h3>
+              <p class="prod-card__spec">SKiiP 4 IGBT power module — integrated gate driver and heatsink, converter power stage.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=IGB-SK04">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Power Components" data-name="igbt busbar" data-search="IGB-BB01 igbt busbar power components laminated dc-link clamping bars terminals">
+            <div class="prod-card__fig"><span class="prod-card__cat">Power Components</span><picture><source type="image/webp" srcset="assets/img/products/igbt-busbar.webp"><img class="prod-card__ph" src="assets/img/products/igbt-busbar.jpg" alt="IGBT busbar" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">IGB-BB01</span>
+              <h3 class="prod-card__name">IGBT busbar</h3>
+              <p class="prod-card__spec">Laminated DC-link busbar assembly — clamping bars and L+/L− terminals for the IGBT stack.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=IGB-BB01">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Panels" data-name="regen frequency converter panel f1 to f5" data-search="FCP-01 regen frequency converter panel f1 to f5 electrical accessories ccu panels">
+            <div class="prod-card__fig"><span class="prod-card__cat">Panels</span><picture><source type="image/webp" srcset="assets/img/products/frequency-converter-panel-f1-f5.webp"><img class="prod-card__ph" src="assets/img/products/frequency-converter-panel-f1-f5.jpg" alt="REGEN frequency converter panel F1 to F5" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">FCP-01</span>
+              <h3 class="prod-card__name">REGEN Frequency Converter panel F1 to F5</h3>
+              <p class="prod-card__spec">Complete REGEN frequency converter panel, F1 to F5, with all electrical accessories and CCU — fully wired and factory tested.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=FCP-01">Ask Price</a></div>
+            </div>
+          </article>
+
+          <article class="prod-card" data-mfr="Regen" data-cat="Power Components" data-name="igbt stacks and gcc capacitor bank" data-search="IGB-ST01 igbt stacks gcc capacitor bank power components">
+            <div class="prod-card__fig"><span class="prod-card__cat">Power Components</span><picture><source type="image/webp" srcset="assets/img/products/igbt-stack-gcc-capacitor-bank.webp"><img class="prod-card__ph" src="assets/img/products/igbt-stack-gcc-capacitor-bank.jpg" alt="IGBT stack and GCC capacitor bank" loading="lazy" width="900" height="1125"></picture></div>
+            <div class="prod-card__body">
+              <span class="prod-card__pn">IGB-ST01</span>
+              <h3 class="prod-card__name">IGBT stacks and GCC capacitor bank</h3>
+              <p class="prod-card__spec">IGBT power stack assembly with matched GCC capacitor bank — DC-link capacitors and power modules for the converter power stage.</p>
+              <div class="prod-card__rating" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.6-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7z"/></svg></div>
+              <div class="prod-card__foot"><a class="btn btn--askprice" href="contact.html?ref=IGB-ST01">Ask Price</a></div>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="no-results" id="no-results" hidden>
+          Nothing matches that filter. Try clearing a filter, or <a href="contact.html">send us the part name directly</a>.
+        </p>
+
+        <nav class="shop-pager" id="shop-pager" aria-label="Pagination" hidden></nav>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-band__inner">
+    <div>
+      <h2>Can't see the part?</h2>
+      <p>This is a sample of what we build — send a code, drawing or nameplate photo for anything not shown.</p>
+    </div>
+    <a class="btn btn--primary" href="contact.html">Send an enquiry
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/logo-white.svg" alt="EnergySYS" width="210" height="40">
+        <p>Manufacture, refurbishment, testing and supply of critical wind turbine components. A Twintronics enterprise.</p>
+        <address class="footer__addr">
+          New#50, Old#224, Nethaji Road<br>
+          PN Palayam, Coimbatore&nbsp;–&nbsp;641037<br>
+          Tamil Nadu, India<br>
+          <a href="tel:+919940247490">+91&nbsp;99402&nbsp;47490</a> · <a href="mailto:rds@esys.co.in">rds@esys.co.in</a>
+        </address>
+        <div class="footer__social">
+          <a href="#" aria-label="EnergySYS on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22V21h-4z"/></svg></a>
+          <a href="#" aria-label="EnergySYS on YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.2 5 12 5 12 5s-7.2 0-8.8.5A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8C4.8 19 12 19 12 19s7.2 0 8.8-.5a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM10 15.5v-7l6 3.5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html?category=Control+Boards">Control boards</a></li>
+          <li><a href="products.html?category=Panels">Rack panels</a></li>
+          <li><a href="products.html?category=Cables">Cable assemblies</a></li>
+          <li><a href="products.html">Full catalogue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="services.html">Service</a></li>
+          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
+          <li><a href="resources.html#careers">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get a quote</h3>
+        <ul>
+          <li><a href="contact.html">Request a quote</a></li>
+          <li><a href="resources.html#downloads">Download brochure</a></li>
+          <li><a href="resources.html#downloads">Product catalogue (PDF)</a></li>
+          <li><a href="tel:+919940247490">Call the workshop</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> EnergySYS · Twintronics. All rights reserved.</span>
+      <span><a href="#">Terms of use</a> · <a href="#">Privacy</a> · <a href="#">Cancellation &amp; refund</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/particles.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
+<script src="assets/js/shop.js" defer></script>
+<script>
+/* Service menu — inline fallback so Wind/Solar works even if main.js is blocked/cached */
+(function(){var li=document.querySelector(".nav__list .has-drop.drop-click");if(!li)return;var b=li.querySelector("a,.drop-toggle"),d=li.querySelector(".drop");if(!b||!d)return;li.setAttribute("data-svc-inline","1");var o=false;function s(){o=true;d.style.cssText="display:block;opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:none;";b.setAttribute("aria-expanded","true");li.classList.add("is-open");}function h(){o=false;d.style.cssText="display:none;";b.setAttribute("aria-expanded","false");li.classList.remove("is-open");}b.addEventListener("click",function(e){e.preventDefault();o?h():s();});b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();o?h():s();}});document.addEventListener("click",function(e){if(o&&!li.contains(e.target))h();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&o)h();});h();})();
+</script>
+</body>
+</html>
