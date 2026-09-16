@@ -125,8 +125,6 @@
             163/1 Mariamman Kovil Thottam,<br>
             Near TEXSTAR, Ganapathy,<br>
             Coimbatore – 641006,<br>
-            Tamil Nadu, India<br>
-            M# 9940247490, P# 0422 352 9054<br>
             GSTIN: 33ANRP 6231A1ZK
           </span>
         </li>
@@ -157,14 +155,15 @@
       <p class="eyebrow">Send a query</p>
 
       <!--
-        SEND QUERY — posts (multipart/form-data) straight to Formspree
-        (https://formspree.io/f/myeyrqzy). No backend involved: Formspree
-        validates, filters spam and emails the query + attachment directly
-        to whatever inbox that Formspree form is configured to deliver to.
-        If Formspree is unreachable, submit falls back to the visitor's email app.
+        SEND QUERY — posts (multipart/form-data) to the bundled Node server
+        (server/enquiry.js) at POST /api/send-query. The server validates, stores a
+        copy in SQLite, and emails the query + attachment to QUERY_RECEIVER_EMAIL
+        (kavinprasad887@gmail.com). Run the site with `npm start`.
+        Recipient + SMTP credentials live only in server/.env — never in this file.
+        If the server is unreachable, submit falls back to the visitor's email app.
       -->
-      <form id="enquiry-form" action="https://formspree.io/f/myeyrqzy" method="POST"
-            enctype="multipart/form-data" data-fallback-email="rds@esys.co.in" novalidate>
+      <form id="enquiry-form" action="/api/send-query" method="POST"
+            enctype="multipart/form-data" data-fallback-email="kavinprasad887@gmail.com" novalidate>
 
         <p class="form-status" role="status" aria-live="polite" hidden></p>
 
@@ -215,6 +214,21 @@
             <textarea id="f-message" name="message" required
               placeholder="Part code or description, quantity, turbine model / application, and any details you can share."></textarea>
             <span class="field__err" aria-live="polite"></span>
+          </div>
+
+          <div class="field is-full">
+            <label for="f-attach">Attachment <span class="field__hint">optional · JPG, PNG or PDF · max 10&nbsp;MB</span></label>
+            <label class="filepick" id="f-attach-pick">
+              <input id="f-attach" name="attachment" type="file"
+                     accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M8 8l4-4 4 4"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+              <span class="filepick__label">Choose a file</span>
+            </label>
+            <div class="filepick__chosen" id="f-attach-chosen" hidden>
+              <span class="filepick__name"></span>
+              <button type="button" class="filepick__rm" aria-label="Remove file">&times;</button>
+            </div>
+            <span class="field__err" id="f-attach-err" aria-live="polite"></span>
           </div>
 
           <div class="field is-full" hidden aria-hidden="true">

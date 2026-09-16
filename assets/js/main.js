@@ -128,10 +128,12 @@
     apply();
   }
 
-  /* ---- Send Query form: prefill, validate, submit --- */
+  /* ---- Send Query form: prefill, validate, attachment, submit --- */
   var form = document.getElementById("enquiry-form");
   if (form) {
     var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var MAX_MB = 10;
+    var OK_FILE = ["image/jpeg", "image/png", "application/pdf"];
 
     var ref = param("ref");
     var subjectEl = form.querySelector('[name="subject"]');
@@ -170,6 +172,45 @@
         else setError(f, "");
       });
     });
+
+    /* --- attachment picker --- */
+    var fileInput = document.getElementById("f-attach");
+    var chosen = document.getElementById("f-attach-chosen");
+    var chosenName = chosen && chosen.querySelector(".filepick__name");
+    var fileErr = document.getElementById("f-attach-err");
+    var pickLabel = form.querySelector("#f-attach-pick .filepick__label");
+
+    function clearFile() {
+      if (fileInput) fileInput.value = "";
+      if (chosen) chosen.hidden = true;
+      if (fileErr) fileErr.textContent = "";
+      if (pickLabel) pickLabel.textContent = "Choose a file";
+    }
+    function checkFile() {
+      if (fileErr) fileErr.textContent = "";
+      var f = fileInput && fileInput.files && fileInput.files[0];
+      if (!f) { if (chosen) chosen.hidden = true; return true; }
+      var extOk = /\.(jpe?g|png|pdf)$/i.test(f.name);
+      if (OK_FILE.indexOf(f.type) === -1 && !extOk) {
+        if (fileErr) fileErr.textContent = "Only JPG, PNG or PDF files are allowed.";
+        clearFile();
+        return false;
+      }
+      if (f.size > MAX_MB * 1024 * 1024) {
+        if (fileErr) fileErr.textContent = "That file is larger than " + MAX_MB + " MB.";
+        clearFile();
+        return false;
+      }
+      if (chosenName) chosenName.textContent = f.name + "  ·  " + Math.max(1, Math.round(f.size / 1024)) + " KB";
+      if (chosen) chosen.hidden = false;
+      if (pickLabel) pickLabel.textContent = "Change file";
+      return true;
+    }
+    if (fileInput) fileInput.addEventListener("change", checkFile);
+    if (chosen) {
+      var rm = chosen.querySelector(".filepick__rm");
+      if (rm) rm.addEventListener("click", clearFile);
+    }
 
     /* --- status + button state helpers --- */
     function showStatus(state, msg) {
@@ -234,6 +275,7 @@
       else if (!EMAIL_RE.test(emailEl.value.trim())) { setError(emailEl, "Please enter a valid email address."); bad.push(emailEl); }
       if (!subjectEl.value.trim()) { setError(subjectEl, "Please enter a subject."); bad.push(subjectEl); }
       if (!messageEl.value.trim()) { setError(messageEl, "Please enter your query."); bad.push(messageEl); }
+      if (!checkFile()) bad.push(fileInput);
 
       if (bad.length) {
         showStatus("err", "Please complete the highlighted fields.");
@@ -249,23 +291,22 @@
       });
       fd.append("ref", param("ref") || "");
       fd.append("page", location.pathname + location.search);
-      fd.append("_subject", "New Website Query — " + (subjectEl.value || "EnergySYS"));
+      if (fileInput && fileInput.files && fileInput.files[0]) {
+        fd.append("attachment", fileInput.files[0], fileInput.files[0].name);
+      }
 
       sending = true;
       btnState("loading");
       showStatus("ok", "Sending your query…");
 
-      fetch(form.getAttribute("action"), {
-        method: "POST",
-        body: fd,
-        headers: { "Accept": "application/json" }
-      })
+      fetch(form.getAttribute("action") || "/api/send-query", { method: "POST", body: fd })
         .then(function (res) {
           return res.json().catch(function () { return {}; }).then(function (data) { return { res: res, data: data }; });
         })
         .then(function (r) {
           sending = false;
-          if (r.res.ok) {
+          var data = r.data || {};
+          if (r.res.ok && data.success) {
             btnState("success");
             setTimeout(function () {
               form.hidden = true;
@@ -275,15 +316,25 @@
                 successPanel.scrollIntoView({ behavior: "smooth", block: "center" });
               }
               form.reset();
+              clearFile();
               btnState("normal");
             }, 750);
+          } else if (data.fields) {
+            btnState("normal");
+            Object.keys(data.fields).forEach(function (k) {
+              var el = form.elements[k] || (k === "attachment" ? fileInput : null);
+              if (el) setError(el, data.fields[k]);
+            });
+            showStatus("err", data.message || "Please complete the required fields.");
+          } else if (r.res.status === 429) {
+            btnState("normal");
+            showStatus("err", data.message || "Too many queries — please try again in a little while.");
+          } else if (r.res.status === 400) {
+            btnState("normal");
+            showStatus("err", data.message || "Please check your details and try again.");
           } else {
             btnState("normal");
-            var errs = (r.data && r.data.errors) || [];
-            var msg = errs.length
-              ? errs.map(function (e) { return e.message; }).join(" ")
-              : "Please check your details and try again.";
-            showStatus("err", "<strong>Unable to Send Query.</strong> " + msg);
+            showStatus("err", "<strong>Unable to Send Query.</strong> Something went wrong while sending your query. Please try again.");
           }
         })
         .catch(function () {

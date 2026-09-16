@@ -471,7 +471,7 @@ html {
 .clients-band .client-wall li:hover {
   background: #fff; transform: translateY(-5px); box-shadow: var(--shadow-lift);
 }
-.clients-band .client-wall li img { max-height: 46px; transition: transform .2s ease; }
+.clients-band .client-wall li img { max-height: 64px; transition: transform .2s ease; }
 .clients-band .client-wall li:hover img { transform: scale(1.05); }
 
 @media (max-width: 1024px) {
@@ -480,7 +480,7 @@ html {
 @media (max-width: 640px) {
   .clients-band .client-wall { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .clients-band .client-wall li { padding: 20px; min-height: 104px; }
-  .clients-band .client-wall li img { max-height: 38px; }
+  .clients-band .client-wall li img { max-height: 52px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .clients-band .client-wall li,

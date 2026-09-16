@@ -456,9 +456,58 @@ function buildG8DNoteHtml(data, publicId, currentDiscipline) {
     '</table></div>';
 }
 
+function buildG8DSenderSubject(data, publicId) {
+  var farm = (data.d2 && data.d2.wind_farm_name) ? data.d2.wind_farm_name.trim() : '';
+  return 'Your G8D Service Request' + (farm ? ' — ' + farm : '') + ' (' + publicId + ')';
+}
+
+function buildG8DSenderText(data, publicId) {
+  var d1 = data.d1 || {}, d2 = data.d2 || {};
+  var L = [];
+  L.push('Hi ' + (d1.contact_person || 'there') + ',');
+  L.push('');
+  L.push('Thank you for submitting a G8D wind farm service request to EnergySYS.');
+  L.push('A copy of your submitted report is attached to this email for your records.');
+  L.push('');
+  L.push('Reference: ' + publicId);
+  L.push('Wind Farm: ' + orDash(d2.wind_farm_name) + (d2.turbine_id ? ' (Turbine ' + d2.turbine_id + ')' : ''));
+  L.push('Submitted: ' + fmtDateTime(new Date().toISOString()));
+  L.push('');
+  L.push('Our team will review your request and follow up with you shortly.');
+  L.push('');
+  L.push('— EnergySYS');
+  return L.join('\n');
+}
+
+function buildG8DSenderHtml(data, publicId) {
+  var C = { ink: '#04361F', green: '#00A24C', greenLink: '#00753A', orange: '#F26A1B',
+    steel: '#5E6B62', line: '#D7E0D9', bg: '#FBFBF8', mist: '#EAF1EC' };
+  var d1 = data.d1 || {}, d2 = data.d2 || {};
+  var s = '';
+  s += '<p style="margin:0 0 14px;font-size:15px;">Hi ' + esc(d1.contact_person || 'there') + ',</p>';
+  s += '<p style="margin:0 0 14px;font-size:14px;">Thank you for submitting a G8D wind farm service request to EnergySYS. ' +
+    'A copy of your submitted report is attached to this email for your records.</p>';
+  s += '<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:18px 0;background:' + C.mist + ';border-radius:6px;">' +
+    '<tr><td style="padding:14px 16px;font-size:13px;color:' + C.ink + ';">' +
+    '<div><strong>Reference:</strong> ' + esc(publicId) + '</div>' +
+    '<div><strong>Wind Farm:</strong> ' + esc(orDash(d2.wind_farm_name)) + (d2.turbine_id ? ' (Turbine ' + esc(d2.turbine_id) + ')' : '') + '</div>' +
+    '<div><strong>Submitted:</strong> ' + esc(fmtDateTime(new Date().toISOString())) + '</div>' +
+    '</td></tr></table>';
+  s += '<p style="margin:0;font-size:14px;color:' + C.ink + ';">Our team will review your request and follow up with you shortly.</p>';
+  s += '<p style="margin-top:22px;font-size:14px;color:' + C.ink + ';">— EnergySYS</p>';
+
+  return '<div style="background:' + C.bg + ';padding:24px 0;font-family:Arial,Helvetica,sans-serif;color:' + C.ink + ';">' +
+    '<table role="presentation" width="640" cellpadding="0" cellspacing="0" style="margin:0 auto;width:640px;max-width:100%;background:#fff;border:1px solid ' + C.line + ';border-radius:6px;overflow:hidden;">' +
+    '<tr><td style="background:' + C.ink + ';padding:16px 22px;"><span style="color:#fff;font-size:17px;font-weight:bold;">EnergySYS</span><span style="color:#8FB3A1;font-size:12px;"> &nbsp;&middot;&nbsp; Your G8D service request</span></td></tr>' +
+    '<tr><td style="height:3px;background:' + C.orange + ';font-size:0;line-height:0;">&nbsp;</td></tr>' +
+    '<tr><td style="padding:22px;">' + s + '</td></tr>' +
+    '</table></div>';
+}
+
 module.exports = {
   buildSubject, buildText, buildHtml,
   buildEnquiryText, buildEnquiryHtml,
   buildServiceRequestSubject, buildServiceRequestText, buildServiceRequestHtml,
   buildG8DSubject, buildG8DNoteText, buildG8DNoteHtml,
+  buildG8DSenderSubject, buildG8DSenderText, buildG8DSenderHtml,
 };

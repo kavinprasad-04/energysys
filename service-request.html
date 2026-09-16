@@ -110,16 +110,18 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
           Back to Home
         </a>
+        <span class="g8d-draftline" id="g8d-draftline" hidden>Draft <b id="g8d-draft-ref"></b> · saved <span id="g8d-draft-saved">—</span></span>
       </div>
 
       <!--
         G8D WIND FARM SERVICE REQUEST — an 8-discipline (8D) problem-solving form.
-        Submits (multipart/form-data) straight to Formspree
-        (https://formspree.io/f/myeyrqzy). No backend involved: Formspree
-        validates, filters spam and emails the full G8D report + attachments
-        directly to whatever inbox that Formspree form is configured to deliver to.
-        There is no server-side draft save/resume or PDF report with this setup —
-        fill and submit the wizard in one sitting.
+        Drafts:  POST/GET /api/g8d/draft  (server/g8d.js) — JSON, no files, resumable via ?draft=<id>.
+        Submit:  POST /api/g8d/submit (multipart/form-data) — validates, stores in SQLite
+        (g8d_requests / g8d_files), saves uploads under server/uploads/g8d/, generates
+        a PDF report and emails it to SERVICE_REQUEST_TO (team) and to the submitter's
+        own email address (confirmation copy). The PDF is also still downloadable at
+        GET /api/g8d/report/<id>.pdf, just with no button surfacing it on this page.
+        Recipient + SMTP credentials live only in server/.env — never in this file.
       -->
 
       <nav class="g8d-tracker" id="g8d-tracker" aria-label="G8D progress">
@@ -132,11 +134,11 @@
           <li data-step="5"><button type="button"><span class="g8d-tracker__dot">D6</span><span class="g8d-tracker__label">Validate</span></button></li>
           <li data-step="6"><button type="button"><span class="g8d-tracker__dot">D7</span><span class="g8d-tracker__label">Prevent</span></button></li>
           <li data-step="7"><button type="button"><span class="g8d-tracker__dot">D8</span><span class="g8d-tracker__label">Closure</span></button></li>
-          <li data-step="8"><button type="button"><span class="g8d-tracker__dot">✓</span><span class="g8d-tracker__label">Review &amp; Submit</span></button></li>
+          <li data-step="8"><button type="button"><span class="g8d-tracker__dot">✓</span><span class="g8d-tracker__label">Attach &amp; Submit</span></button></li>
         </ol>
       </nav>
 
-      <form id="g8d-form" action="https://formspree.io/f/myeyrqzy" method="POST" enctype="multipart/form-data" novalidate>
+      <form id="g8d-form" novalidate>
         <p class="form-status" role="status" aria-live="polite" hidden></p>
 
         <div class="g8d-step is-active" data-step="0">
@@ -631,6 +633,20 @@
 
         <div class="g8d-step" data-step="8" hidden>
           <div class="g8d-card">
+            <h2><span class="g8d-card__idx">·</span> Upload Documents</h2>
+            <p class="g8d-card__hint">Photos, videos, inspection reports, fault logs, maintenance reports, test reports, technical drawings or any other supporting file. Up to 12 files, 25 MB each.</p>
+            <label class="srq-drop" id="g8d-drop" tabindex="0">
+              <input id="g8d-docs" name="attachments" type="file" multiple
+                accept=".pdf,.jpg,.jpeg,.png,.webp,.gif,.heic,.mp4,.mov,.avi,.mkv,.webm,.doc,.docx,.xls,.xlsx,.csv,.txt,.rtf,.dwg,.dxf,.zip,.7z,.rar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V4M8 8l4-4 4 4"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+              <b>Click to choose files, or drop them here</b>
+              <span>Nothing is uploaded until you submit.</span>
+            </label>
+            <ul class="srq-filelist" id="g8d-filelist" hidden></ul>
+            <span class="field__err" id="g8d-docs-err" aria-live="polite"></span>
+          </div>
+
+          <div class="g8d-card">
             <h2><span class="g8d-card__idx">·</span> Review</h2>
             <p class="g8d-card__hint">A quick summary before you submit. Use Back to change anything.</p>
             <dl class="g8d-review" id="g8d-review"></dl>
@@ -638,13 +654,14 @@
 
           <div class="field is-full" hidden aria-hidden="true">
             <label for="g8d-website">Leave this field empty</label>
-            <input id="g8d-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+            <input id="g8d-website" name="website" type="text" tabindex="-1" autocomplete="off">
           </div>
         </div>
 
         <div class="g8d-nav">
           <button type="button" class="btn btn--ghost" id="g8d-back" disabled>← Back</button>
           <div class="g8d-nav__right">
+            <button type="button" class="btn btn--ghost" id="g8d-save-draft">Save Draft</button>
             <button type="button" class="btn btn--primary" id="g8d-next">Next →</button>
             <button class="btn btn--primary btn--send" type="submit" id="g8d-submit" hidden data-label="SUBMIT G8D SERVICE REQUEST">
               <span class="btn--send__text">SUBMIT G8D SERVICE REQUEST</span>
@@ -662,14 +679,15 @@
           <path class="query-success__tick" fill="none" d="M14 27 l8 8 l16 -18"/>
         </svg>
         <h3>G8D Service Request Submitted Successfully</h3>
-        <p>Your G8D wind farm service request has been received — our team will review it and take it forward through the remaining disciplines. A PDF copy of your report has also been downloaded to this device for your own records.</p>
+        <p>Your G8D wind farm service request has been received — our team will review it and take it forward through the remaining disciplines. A copy of your PDF report has also been emailed to you.</p>
         <dl class="g8d-success__grid">
+          <div><dt>Service Request ID</dt><dd id="g8d-res-id">—</dd></div>
           <div><dt>Submission Date</dt><dd id="g8d-res-date">—</dd></div>
           <div><dt>G8D Status</dt><dd id="g8d-res-status">—</dd></div>
           <div><dt>Current Discipline</dt><dd id="g8d-res-discipline">—</dd></div>
         </dl>
         <p style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-          <button type="button" class="btn btn--primary btn--sm" id="g8d-again">Submit another request</button>
+          <button type="button" class="btn btn--ghost btn--sm" id="g8d-again">Submit another request</button>
           <a class="btn btn--ghost btn--sm" href="index.html">Back to Home</a>
         </p>
       </div>
@@ -737,7 +755,6 @@
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/particles.js" defer></script>
 <script src="assets/js/motion.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 <script src="assets/js/g8d-request.js" defer></script>
 <script>
 /* Service menu — inline fallback so Wind/Solar works even if main.js is blocked/cached */

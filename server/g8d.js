@@ -24,6 +24,9 @@ const {
   buildG8DSubject,
   buildG8DNoteText,
   buildG8DNoteHtml,
+  buildG8DSenderSubject,
+  buildG8DSenderText,
+  buildG8DSenderHtml,
 } = require('./reportTemplate');
 
 const router = express.Router();
@@ -310,6 +313,21 @@ router.post('/submit', withUpload, async function (req, res) {
     attachments.unshift({ filename: pid + '-G8D-Report.pdf', content: pdfBuffer, contentType: 'application/pdf' });
   } catch (pdfErr) {
     console.error('[g8d] PDF build for email failed:', pdfErr);
+  }
+
+  var pdfOnlyAttachment = attachments.length ? [attachments[0]] : [];
+  if (d1.email && EMAIL_RE.test(d1.email)) {
+    try {
+      await sendReportMail({
+        to: [d1.email],
+        subject: buildG8DSenderSubject(data, pid),
+        text: buildG8DSenderText(data, pid),
+        html: buildG8DSenderHtml(data, pid),
+        attachments: pdfOnlyAttachment,
+      });
+    } catch (senderMailErr) {
+      console.error('[g8d] sender confirmation email failed:', senderMailErr);
+    }
   }
 
   try {
