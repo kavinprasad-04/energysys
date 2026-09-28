@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>News — EnergySYS wind turbine parts &amp; service</title>
-<meta name="description" content="Updates from EnergySYS — capacity, certifications, contracts and events in wind turbine parts and refurbishment.">
+<meta name="description" content="Latest wind energy industry news from around the world, with links to the original articles.">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,7 +74,6 @@
         </a>
         <ul class="drop">
           <li><a href="resources.html#clients">Clients</a></li>
-          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
           <li><a href="resources.html#careers">Careers</a></li>
         </ul>
       </li>
@@ -96,49 +95,17 @@
   </div>
   <div class="container">
     <p class="eyebrow">News / updates</p>
-    <h1>What's moving in the workshop</h1>
-    <p>Capacity, certifications, contracts and where to find us.</p>
+    <h1>Wind energy news</h1>
+    <p>Latest wind energy headlines from industry news feeds, linking to the original articles.</p>
     <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span>News</nav>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <!-- PLACEHOLDER NEWS — replace headlines, dates and copy with real items. -->
-    <div class="news-list reveal">
-
-      <article class="news-item">
-        <time datetime="2026-06">Jun 2026</time>
-        <div>
-          <h3>FRP moulding capacity expanded</h3>
-          <p>A second lay-up bay is now in use, shortening lead times on nacelle covers, spinner segments and other GRP parts. [PLACEHOLDER — confirm details.]</p>
-        </div>
-      </article>
-
-      <article class="news-item">
-        <time datetime="2026-03">Mar 2026</time>
-        <div>
-          <h3>Rotating-joint test rig upgraded</h3>
-          <p>Higher-pressure test capability added for hydraulic rotating unions, with automated logging of every cycle against the acceptance spec. [PLACEHOLDER — confirm details.]</p>
-        </div>
-      </article>
-
-      <article class="news-item">
-        <time datetime="2025-11">Nov 2025</time>
-        <div>
-          <h3>ISO 45001 certification achieved</h3>
-          <p>EnergySYS completed certification to ISO 45001, joining ISO 9001 and ISO 14001 under a single integrated management system. [PLACEHOLDER — confirm date and issuing body.]</p>
-        </div>
-      </article>
-
-      <article class="news-item">
-        <time datetime="2025-09">Sep 2025</time>
-        <div>
-          <h3>New annual parts contracts signed</h3>
-          <p>Framework agreements now in place with independent service providers for held-stock spares and call-off delivery across several turbine platforms. [PLACEHOLDER — confirm details.]</p>
-        </div>
-      </article>
-
+    <!-- Live wind-energy headlines from public RSS feeds, loaded by assets/js/news.js from /api/news. -->
+    <div class="news-list" id="news-list" aria-live="polite">
+      <p class="news-note">Loading the latest wind energy news…</p>
     </div>
   </div>
 </section>
@@ -188,7 +155,6 @@
         <ul>
           <li><a href="about.html">About us</a></li>
           <li><a href="services.html">Service</a></li>
-          <li><a href="resources.html#quality">Quality &amp; IMS</a></li>
           <li><a href="resources.html#careers">Careers</a></li>
           <li><a href="news.html">News</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -214,6 +180,7 @@
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/particles.js" defer></script>
 <script src="assets/js/motion.js" defer></script>
+<script src="assets/js/news.js" defer></script>
 <script>
 /* Service menu — inline fallback so Wind/Solar works even if main.js is blocked/cached */
 (function(){var li=document.querySelector(".nav__list .has-drop.drop-click");if(!li)return;var b=li.querySelector("a,.drop-toggle"),d=li.querySelector(".drop");if(!b||!d)return;li.setAttribute("data-svc-inline","1");var o=false;function s(){o=true;d.style.cssText="display:block;opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:none;";b.setAttribute("aria-expanded","true");li.classList.add("is-open");}function h(){o=false;d.style.cssText="display:none;";b.setAttribute("aria-expanded","false");li.classList.remove("is-open");}b.addEventListener("click",function(e){e.preventDefault();o?h():s();});b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();o?h():s();}});document.addEventListener("click",function(e){if(o&&!li.contains(e.target))h();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&o)h();});h();})();

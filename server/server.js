@@ -10,6 +10,7 @@ const reportsRouter = require('./reports');
 const enquiryRouter = require('./enquiry');
 const serviceRequestRouter = require('./service-request');
 const g8dRouter = require('./g8d');
+const newsRouter = require('./news');
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
@@ -25,6 +26,7 @@ app.use('/api/send-query', enquiryRouter); // canonical
 app.use('/api/enquiry', enquiryRouter);    // alias (existing)
 app.use('/api/service-request', serviceRequestRouter);
 app.use('/api/g8d', g8dRouter);
+app.use('/api/news', newsRouter);
 app.get('/api/health', (req, res) => res.json({
   ok: true,
   reportTo: (process.env.REPORT_TO || 'rds@esys.co.in').trim(),
