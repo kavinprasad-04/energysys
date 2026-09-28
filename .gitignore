@@ -9,3 +9,4 @@ server/uploads/
 
 # original hi-res media (optimised copies live in assets/video + assets/img/photos)
 assets/_source/
+/energysys/
